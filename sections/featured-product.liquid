@@ -15,18 +15,14 @@
           width="1200"
           loading="eager"
         >
-      {% elsif section.settings.fallback_image %}
+      {% else %}
         <img
           class="featured-product__image"
-          src="{{ section.settings.fallback_image | image_url: width: 1200 }}"
+          src="https://res.cloudinary.com/dj4rhk89z/image/upload/v1778794638/IMG_0229_yyr3gw.jpg"
           alt="Venatici Nuit De Lune"
           width="1200"
           loading="eager"
         >
-      {% else %}
-        <div class="featured-product__placeholder">
-          <span>Produktbild</span>
-        </div>
       {% endif %}
     </div>
 
