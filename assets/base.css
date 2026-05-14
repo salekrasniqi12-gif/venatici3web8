@@ -1400,15 +1400,31 @@ h1, h2, h3, h4, h5, h6,
 
 @media (max-width: 1024px) {
   .akte-grid {
-    grid-template-columns: 1fr;
-    border: none;
-    gap: 1px;
-    background: var(--color-border);
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .akte-card {
-    border-right: none;
-    background: var(--color-bg);
+    padding: 2rem 1rem;
+  }
+
+  .akte-numeral {
+    font-size: 3rem;
+  }
+
+  .akte-tier {
+    font-size: 0.55rem;
+  }
+
+  .akte-subtitle {
+    font-size: 1rem;
+  }
+
+  .akte-notes {
+    font-size: 0.75rem;
+  }
+
+  .akte-quote {
+    font-size: 0.7rem;
   }
 }
 
@@ -1484,7 +1500,7 @@ h1, h2, h3, h4, h5, h6,
   }
 
   .fragrance-notes__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .note-tier {
