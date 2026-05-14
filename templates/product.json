@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "main": {
+      "type": "featured-product",
+      "settings": {
+        "section_label": "The Fragrance",
+        "show_qty": true
+      }
+    },
+    "fragrance-notes": {
+      "type": "fragrance-notes",
+      "settings": {
+        "label": "Composition",
+        "heading": "The Notes"
+      },
+      "blocks": {
+        "top": {
+          "type": "note_tier",
+          "settings": {
+            "tier_label": "Top Notes",
+            "notes_list": "Bergamot\nBlack Pepper\nCardamom"
+          }
+        },
+        "heart": {
+          "type": "note_tier",
+          "settings": {
+            "tier_label": "Heart Notes",
+            "notes_list": "Bulgarian Rose\nJasmine Sambac\nIris"
+          }
+        },
+        "base": {
+          "type": "note_tier",
+          "settings": {
+            "tier_label": "Base Notes",
+            "notes_list": "Oud\nAmber\nSandalwood\nMusk"
+          }
+        }
+      },
+      "blocks_order": ["top", "heart", "base"]
+    }
+  },
+  "order": ["main", "fragrance-notes"]
+}

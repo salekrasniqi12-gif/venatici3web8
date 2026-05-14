@@ -1,0 +1,98 @@
+<section class="hero" id="hero">
+  {% if section.settings.bg_image %}
+    <div
+      class="hero__bg"
+      style="background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');"
+    ></div>
+  {% endif %}
+
+  <div
+    class="hero__overlay"
+    style="opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
+  ></div>
+
+  <div class="hero__content">
+    <p class="label hero__label fade-in-up">
+      {{ section.settings.label | default: 'Venatici Parfums' }}
+    </p>
+
+    <h1 class="display hero__title fade-in-up">
+      {{ section.settings.heading | default: 'Nuit De Lune' }}
+    </h1>
+
+    <p class="label hero__sub fade-in-up" style="color: var(--color-text-muted); letter-spacing: 0.32em;">
+      {{ section.settings.subheading | default: 'Un parfum de nuit' }}
+    </p>
+
+    {% if section.settings.cta_label != blank %}
+      <a
+        href="{{ section.settings.cta_link | default: '#featured-product' }}"
+        class="btn btn--primary fade-in-up"
+      >
+        {{ section.settings.cta_label }}
+      </a>
+    {% endif %}
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <div class="hero__scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Venatici Parfums"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Nuit De Lune"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Un parfum de nuit"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Discover"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 20,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 65
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

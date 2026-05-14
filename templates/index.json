@@ -1,0 +1,93 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "label": "Venatici Parfums",
+        "heading": "Nuit De Lune",
+        "subheading": "Un parfum de nuit",
+        "cta_label": "Discover",
+        "overlay_opacity": 65
+      }
+    },
+    "featured-product": {
+      "type": "featured-product",
+      "settings": {
+        "section_label": "The Fragrance",
+        "show_qty": true
+      }
+    },
+    "fragrance-story": {
+      "type": "fragrance-story",
+      "settings": {
+        "label": "The Story",
+        "quote": "Born from the silence of a moonlit night — a fragrance that speaks before words do.",
+        "body": "<p>Venatici Nuit De Lune is a rare olfactory journey into the depths of night. Inspired by the quiet grandeur of starlit skies and the warmth of ancient woods, this fragrance weaves together the finest raw materials from around the world into a composition of extraordinary depth and longevity.<\/p>"
+      }
+    },
+    "fragrance-notes": {
+      "type": "fragrance-notes",
+      "settings": {
+        "label": "Composition",
+        "heading": "The Notes"
+      },
+      "blocks": {
+        "top": {
+          "type": "note_tier",
+          "settings": {
+            "tier_label": "Top Notes",
+            "notes_list": "Bergamot\nBlack Pepper\nCardamom"
+          }
+        },
+        "heart": {
+          "type": "note_tier",
+          "settings": {
+            "tier_label": "Heart Notes",
+            "notes_list": "Bulgarian Rose\nJasmine Sambac\nIris"
+          }
+        },
+        "base": {
+          "type": "note_tier",
+          "settings": {
+            "tier_label": "Base Notes",
+            "notes_list": "Oud\nAmber\nSandalwood\nMusk"
+          }
+        }
+      },
+      "blocks_order": ["top", "heart", "base"]
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "label": "Reviews",
+        "heading": "What They Say"
+      },
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "An extraordinary fragrance — mysterious, deep, unforgettable. It stayed with me for over twelve hours.",
+            "author": "— M. Laurent",
+            "origin": "Paris, France"
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Nuit De Lune is unlike anything I have encountered before. Elegant, confident, and deeply sensual.",
+            "author": "— K. Hoffmann",
+            "origin": "Berlin, Germany"
+          }
+        }
+      },
+      "blocks_order": ["t1", "t2"]
+    }
+  },
+  "order": [
+    "hero",
+    "featured-product",
+    "fragrance-story",
+    "fragrance-notes",
+    "testimonials"
+  ]
+}

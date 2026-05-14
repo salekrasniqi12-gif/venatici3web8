@@ -1,0 +1,47 @@
+<div class="cart-page container section-padding">
+  <h1 class="h2" style="margin-bottom: 3rem; letter-spacing: 0.1em;">{{ 'cart.title' | t }}</h1>
+
+  {% if cart.item_count == 0 %}
+    <p class="body-text">{{ 'cart.empty' | t }}</p>
+    <a href="/" class="btn btn--primary" style="margin-top: 2rem;">Continue Shopping</a>
+  {% else %}
+    <div style="display: grid; grid-template-columns: 1fr 340px; gap: 4rem; align-items: start;">
+      <div>
+        {% for item in cart.items %}
+          <div class="cart-item">
+            {% if item.image %}
+              <img
+                class="cart-item__image"
+                src="{{ item.image | image_url: width: 160 }}"
+                alt="{{ item.title | escape }}"
+                width="80" height="80" loading="lazy"
+              >
+            {% else %}
+              <div class="cart-item__image"></div>
+            {% endif %}
+            <div class="cart-item__details">
+              <div class="cart-item__title">{{ item.product.title }}</div>
+              {% unless item.variant.title == 'Default Title' %}
+                <div class="cart-item__variant">{{ item.variant.title }}</div>
+              {% endunless %}
+              <div class="cart-item__price">{{ item.final_line_price | money }}</div>
+              <a href="{{ item.url_to_remove }}" class="cart-item__remove">Remove</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div style="border: 1px solid var(--color-border); padding: 2.5rem;">
+        <div class="cart-drawer__subtotal" style="margin-bottom: 2rem;">
+          <span class="cart-drawer__subtotal-label">{{ 'cart.subtotal' | t }}</span>
+          <span class="cart-drawer__subtotal-price">{{ cart.total_price | money }}</span>
+        </div>
+        <a href="{{ routes.checkout }}" class="btn btn--primary btn--full">{{ 'cart.checkout' | t }}</a>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{ "name": "Cart Page" }
+{% endschema %}

@@ -1,0 +1,66 @@
+<div class="cart-drawer" id="cart-drawer" aria-label="Cart" aria-modal="true" role="dialog">
+  <div class="cart-drawer__overlay" tabindex="-1"></div>
+
+  <div class="cart-drawer__panel">
+    <div class="cart-drawer__header">
+      <span class="cart-drawer__title">{{ 'cart.title' | t }}</span>
+      <button class="cart-drawer__close" aria-label="{{ 'accessibility.close_cart' | t }}">
+        {% render 'icon-close' %}
+      </button>
+    </div>
+
+    <div class="cart-drawer__body">
+      {% if cart.item_count == 0 %}
+        <p class="cart-drawer__empty">{{ 'cart.empty' | t }}</p>
+      {% else %}
+        {% for item in cart.items %}
+          <div class="cart-item">
+            {% if item.image %}
+              <img
+                class="cart-item__image"
+                src="{{ item.image | image_url: width: 160 }}"
+                alt="{{ item.title | escape }}"
+                width="80"
+                height="80"
+                loading="lazy"
+              >
+            {% else %}
+              <div class="cart-item__image"></div>
+            {% endif %}
+
+            <div class="cart-item__details">
+              <div class="cart-item__title">{{ item.product.title }}</div>
+              {% unless item.variant.title == 'Default Title' %}
+                <div class="cart-item__variant">{{ item.variant.title }}</div>
+              {% endunless %}
+              <div class="cart-item__price">
+                {{ item.final_line_price | money }}
+              </div>
+              <button
+                class="cart-item__remove js-cart-remove"
+                data-key="{{ item.key }}"
+                aria-label="{{ 'cart.remove' | t }}"
+              >{{ 'cart.remove' | t }}</button>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__subtotal">
+        <span class="cart-drawer__subtotal-label">{{ 'cart.subtotal' | t }}</span>
+        <span class="cart-drawer__subtotal-price">{{ cart.total_price | money }}</span>
+      </div>
+      <a href="{{ routes.checkout }}" class="btn btn--primary btn--full">
+        {{ 'cart.checkout' | t }}
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cart Drawer"
+}
+{% endschema %}

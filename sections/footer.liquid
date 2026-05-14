@@ -1,0 +1,52 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="site-footer__inner">
+
+      <div class="site-footer__logo">{{ shop.name }}</div>
+
+      {% if section.settings.menu != blank %}
+        <nav class="site-footer__nav" aria-label="Footer navigation">
+          {% for link in linklists[section.settings.menu].links %}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          {% endfor %}
+        </nav>
+      {% endif %}
+
+      {% if settings.social_instagram != blank or settings.social_tiktok != blank %}
+        <div class="site-footer__social">
+          {% if settings.social_instagram != blank %}
+            <a href="{{ settings.social_instagram }}" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+          {% endif %}
+          {% if settings.social_tiktok != blank %}
+            <a href="{{ settings.social_tiktok }}" target="_blank" rel="noopener" aria-label="TikTok">TikTok</a>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <p class="site-footer__copy">
+        {{ section.settings.copyright | default: '&copy; 2025 Venatici. All rights reserved.' }}
+      </p>
+
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Footer menu",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright text",
+      "default": "© 2025 Venatici. All rights reserved."
+    }
+  ]
+}
+{% endschema %}

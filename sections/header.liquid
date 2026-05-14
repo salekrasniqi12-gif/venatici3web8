@@ -1,0 +1,55 @@
+<header class="site-header" role="banner">
+  <div class="site-header__inner">
+
+    <nav class="site-header__nav" aria-label="Main navigation">
+      {% if section.settings.menu != blank %}
+        {% for link in linklists[section.settings.menu].links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+      {% else %}
+        <a href="#fragrance-story">Story</a>
+        <a href="#fragrance-notes">Notes</a>
+      {% endif %}
+    </nav>
+
+    <a href="{{ routes.root_url }}" class="site-header__logo" aria-label="{{ shop.name }}">
+      {{ section.settings.logo_text | default: shop.name }}
+    </a>
+
+    <div class="site-header__actions">
+      <button class="cart-toggle js-cart-open" aria-label="{{ 'accessibility.open_cart' | t }}">
+        {% render 'cart-icon' %}
+        <span class="cart-count" data-count="{{ cart.item_count }}">
+          {{ cart.item_count }}
+        </span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text",
+      "default": "VENATICI"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_header",
+      "label": "Sticky header",
+      "default": true
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,21 @@
+{% comment %}
+  Usage: {% render 'product-card', product: product %}
+{% endcomment %}
+
+<a class="product-card" href="{{ product.url }}">
+  <div class="product-card__image-wrap">
+    {% if product.featured_image %}
+      <img
+        class="product-card__image"
+        src="{{ product.featured_image | image_url: width: 600 }}"
+        alt="{{ product.featured_image.alt | escape }}"
+        width="600"
+        loading="lazy"
+      >
+    {% else %}
+      <div class="product-card__image" style="background:var(--color-surface-2);aspect-ratio:3/4;"></div>
+    {% endif %}
+  </div>
+  <h3 class="product-card__title">{{ product.title }}</h3>
+  <p class="product-card__price">{{ product.price | money }}</p>
+</a>

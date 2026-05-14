@@ -1,0 +1,17 @@
+<div class="page-content container section-padding">
+  <h1 class="h2" style="margin-bottom: 4rem; letter-spacing: 0.1em; text-align: center;">
+    {{ collection.title }}
+  </h1>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2.5rem;">
+    {% for product in collection.products %}
+      {% render 'product-card', product: product %}
+    {% else %}
+      <p class="body-text">No products found.</p>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{ "name": "Collection" }
+{% endschema %}

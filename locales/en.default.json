@@ -1,0 +1,27 @@
+{
+  "general": {
+    "currency_symbol": "€"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty.",
+    "add_to_cart": "Add to Cart",
+    "adding": "Adding…",
+    "view_cart": "View Cart",
+    "checkout": "Checkout",
+    "subtotal": "Subtotal",
+    "remove": "Remove",
+    "close": "Close"
+  },
+  "product": {
+    "sold_out": "Sold Out",
+    "unavailable": "Unavailable",
+    "quantity": "Quantity"
+  },
+  "accessibility": {
+    "open_cart": "Open cart",
+    "close_cart": "Close cart",
+    "close_menu": "Close menu",
+    "open_menu": "Open menu"
+  }
+}

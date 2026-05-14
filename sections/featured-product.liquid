@@ -1,0 +1,148 @@
+{% assign product = section.settings.product %}
+{% if product == blank %}
+  {% assign product = all_products.first %}
+{% endif %}
+
+<section class="featured-product section-padding" id="featured-product" data-product-section>
+  <div class="featured-product__grid">
+
+    <div class="featured-product__image-wrap">
+      {% if product != blank and product.featured_image %}
+        <img
+          class="featured-product__image"
+          src="{{ product.featured_image | image_url: width: 1000 }}"
+          alt="{{ product.featured_image.alt | default: product.title | escape }}"
+          width="1000"
+          loading="eager"
+        >
+      {% else %}
+        <div class="featured-product__placeholder">
+          <span>Product Image</span>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="featured-product__info">
+      <p class="label featured-product__label fade-in-up">
+        {{ section.settings.section_label | default: 'The Fragrance' }}
+      </p>
+
+      {% if product != blank %}
+        <h2 class="featured-product__title fade-in-up">{{ product.title }}</h2>
+
+        <div class="featured-product__price fade-in-up">
+          {{ product.price | money }}
+        </div>
+
+        {% if product.description != blank %}
+          <div class="featured-product__description body-text fade-in-up">
+            {{ product.description }}
+          </div>
+        {% endif %}
+
+        <form
+          action="/cart/add"
+          method="post"
+          data-atc-form
+          class="fade-in-up"
+        >
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+          {% if product.variants.size > 1 %}
+            <div class="product-options">
+              <label class="product-option__label" for="variant-select-{{ section.id }}">
+                {{ product.options.first }}
+              </label>
+              <select
+                class="variant-select"
+                id="variant-select-{{ section.id }}"
+                name="id"
+              >
+                {% for variant in product.variants %}
+                  <option
+                    value="{{ variant.id }}"
+                    data-variant-id="{{ variant.id }}"
+                    data-price="{{ variant.price }}"
+                    data-available="{{ variant.available }}"
+                    {% if variant == product.selected_or_first_available_variant %}selected{% endif %}
+                    {% unless variant.available %}disabled{% endunless %}
+                  >
+                    {{ variant.title }}
+                    {% unless variant.available %} – Sold Out{% endunless %}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endif %}
+
+          {% if section.settings.show_qty %}
+            <div class="qty-wrap">
+              <button type="button" class="qty-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
+              <input
+                class="qty-input"
+                type="number"
+                name="quantity"
+                value="1"
+                min="1"
+                aria-label="{{ 'product.quantity' | t }}"
+              >
+              <button type="button" class="qty-btn" data-action="increase" aria-label="Increase quantity">+</button>
+            </div>
+          {% endif %}
+
+          <button
+            type="submit"
+            class="btn btn--primary"
+            data-atc-btn
+            {% unless product.available %}aria-disabled="true"{% endunless %}
+          >
+            {% if product.available %}
+              {{ 'cart.add_to_cart' | t }}
+            {% else %}
+              {{ 'product.sold_out' | t }}
+            {% endif %}
+          </button>
+
+          <p class="atc-error" role="alert" aria-live="assertive"></p>
+        </form>
+
+      {% else %}
+        <h2 class="featured-product__title">Venatici Nuit De Lune</h2>
+        <p class="featured-product__description body-text">
+          Select a product in the theme editor to display it here.
+        </p>
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Product",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "section_label",
+      "label": "Section label",
+      "default": "The Fragrance"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_qty",
+      "label": "Show quantity selector",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Product"
+    }
+  ]
+}
+{% endschema %}
