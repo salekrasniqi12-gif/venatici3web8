@@ -60,7 +60,7 @@
           }
         }
       },
-      "blocks_order": ["top", "heart", "base"]
+      "block_order": ["top", "heart", "base"]
     },
     "testimonials": {
       "type": "testimonials",
@@ -86,7 +86,7 @@
           }
         }
       },
-      "blocks_order": ["t1", "t2"]
+      "block_order": ["t1", "t2"]
     }
   },
   "order": [
