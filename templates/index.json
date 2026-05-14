@@ -13,44 +13,50 @@
     "featured-product": {
       "type": "featured-product",
       "settings": {
-        "section_label": "The Fragrance",
+        "section_label": "Der Duft",
         "show_qty": true
       }
     },
     "fragrance-story": {
       "type": "fragrance-story",
       "settings": {
-        "label": "The Story",
-        "quote": "Born from the silence of a moonlit night — a fragrance that speaks before words do.",
-        "body": "<p>Venatici Nuit De Lune is a rare olfactory journey into the depths of night. Inspired by the quiet grandeur of starlit skies and the warmth of ancient woods, this fragrance weaves together the finest raw materials from around the world into a composition of extraordinary depth and longevity.<\/p>"
+        "label": "Die Geschichte",
+        "quote": "Geboren aus der Stille einer mondbeglänzten Nacht — ein Duft, der spricht, bevor Worte es tun.",
+        "body": "<p>Venatici Nuit De Lune ist eine seltene olfaktorische Reise in die Tiefen der Nacht. Inspiriert von der stillen Erhabenheit sternenklarer Himmel und der Wärme uralter Wälder, verwebt dieser Duft die feinsten Rohstoffe aus aller Welt zu einer Komposition von außerordentlicher Tiefe und Langlebigkeit.<\/p>"
       }
     },
     "fragrance-notes": {
       "type": "fragrance-notes",
       "settings": {
-        "label": "Composition",
-        "heading": "The Notes"
+        "heading_plain": "Die Drei",
+        "heading_italic": "Akte"
       },
       "blocks": {
         "top": {
           "type": "note_tier",
           "settings": {
-            "tier_label": "Top Notes",
-            "notes_list": "Bergamot\nBlack Pepper\nCardamom"
+            "tier_label": "KOPFNOTEN",
+            "tier_subtitle": "Der erste Atemzug",
+            "notes_list": "Kokosnuss\nHaselnuss",
+            "tier_quote": "Cremig, samten, verführerisch — wie warme Mandelmilch im Mondlicht."
           }
         },
         "heart": {
           "type": "note_tier",
           "settings": {
-            "tier_label": "Heart Notes",
-            "notes_list": "Bulgarian Rose\nJasmine Sambac\nIris"
+            "tier_label": "HERZNOTEN",
+            "tier_subtitle": "Die Seele des Dufts",
+            "notes_list": "Rose\nNeroli",
+            "tier_quote": "Blühend und zugleich strahlend — das geheime Herz der Komposition."
           }
         },
         "base": {
           "type": "note_tier",
           "settings": {
-            "tier_label": "Base Notes",
-            "notes_list": "Oud\nAmber\nSandalwood\nMusk"
+            "tier_label": "BASISNOTEN",
+            "tier_subtitle": "Das Fundament",
+            "notes_list": "Vanille\nMoschus\nZedernholz",
+            "tier_quote": "Die letzte Erinnerung — warm, holzig, von dauerhafter Tiefe."
           }
         }
       },
@@ -59,24 +65,24 @@
     "testimonials": {
       "type": "testimonials",
       "settings": {
-        "label": "Reviews",
-        "heading": "What They Say"
+        "label": "Bewertungen",
+        "heading": "Was sie sagen"
       },
       "blocks": {
         "t1": {
           "type": "testimonial",
           "settings": {
-            "quote": "An extraordinary fragrance — mysterious, deep, unforgettable. It stayed with me for over twelve hours.",
+            "quote": "Ein außergewöhnlicher Duft — geheimnisvoll, tief, unvergesslich. Er blieb über zwölf Stunden bei mir.",
             "author": "— M. Laurent",
-            "origin": "Paris, France"
+            "origin": "Paris, Frankreich"
           }
         },
         "t2": {
           "type": "testimonial",
           "settings": {
-            "quote": "Nuit De Lune is unlike anything I have encountered before. Elegant, confident, and deeply sensual.",
+            "quote": "Nuit De Lune ist wie nichts, was ich je erlebt habe. Elegant, selbstbewusst und zutiefst sinnlich.",
             "author": "— K. Hoffmann",
-            "origin": "Berlin, Germany"
+            "origin": "Berlin, Deutschland"
           }
         }
       },
