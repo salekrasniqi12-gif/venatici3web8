@@ -1426,19 +1426,61 @@ h1, h2, h3, h4, h5, h6,
   }
 
   .featured-product__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 50% 50%;
   }
 
   .featured-product__image-wrap {
-    min-height: 80vw;
+    min-height: 50vw;
   }
 
   .featured-product__info {
-    padding: 3rem 1.5rem;
+    padding: 2rem 1.2rem;
+  }
+
+  .featured-product__title {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    margin-bottom: 0.3rem;
+  }
+
+  .featured-product__price {
+    font-size: 1rem;
+    margin-bottom: 1rem;
   }
 
   .featured-product__description {
+    font-size: 0.75rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
     max-width: 100%;
+  }
+
+  .featured-product__notes-inline {
+    gap: 0.35rem;
+    margin-bottom: 1.2rem;
+    padding-top: 1rem;
+  }
+
+  .fp-note-tier {
+    font-size: 0.55rem;
+    min-width: 2.8rem;
+  }
+
+  .fp-note-list {
+    font-size: 0.7rem;
+  }
+
+  .qty-wrap {
+    margin-bottom: 0.8rem;
+  }
+
+  .qty-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .qty-input {
+    width: 40px;
+    height: 36px;
   }
 
   .fragrance-notes__grid {
