@@ -11,6 +11,10 @@
         "overlay_opacity": 65
       }
     },
+    "product-stats": {
+      "type": "product-stats",
+      "settings": {}
+    },
     "featured-product": {
       "type": "featured-product",
       "settings": {
@@ -118,6 +122,7 @@
   },
   "order": [
     "hero",
+    "product-stats",
     "featured-product",
     "fragrance-story",
     "fragrance-notes",
