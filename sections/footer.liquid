@@ -1,32 +1,27 @@
 <footer class="site-footer" role="contentinfo">
   <div class="container">
     <div class="site-footer__inner">
-
       <div class="site-footer__logo">{{ shop.name }}</div>
-
       {% if section.settings.menu != blank %}
-        <nav class="site-footer__nav" aria-label="Footer navigation">
+        <nav class="site-footer__nav" aria-label="Footer Navigation">
           {% for link in linklists[section.settings.menu].links %}
             <a href="{{ link.url }}">{{ link.title }}</a>
           {% endfor %}
         </nav>
       {% endif %}
-
       {% if settings.social_instagram != blank or settings.social_tiktok != blank %}
         <div class="site-footer__social">
           {% if settings.social_instagram != blank %}
-            <a href="{{ settings.social_instagram }}" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+            <a href="{{ settings.social_instagram }}" target="_blank" rel="noopener">Instagram</a>
           {% endif %}
           {% if settings.social_tiktok != blank %}
-            <a href="{{ settings.social_tiktok }}" target="_blank" rel="noopener" aria-label="TikTok">TikTok</a>
+            <a href="{{ settings.social_tiktok }}" target="_blank" rel="noopener">TikTok</a>
           {% endif %}
         </div>
       {% endif %}
-
       <p class="site-footer__copy">
-        {{ section.settings.copyright | default: '&copy; 2025 Venatici. All rights reserved.' }}
+        {{ section.settings.copyright | default: '© 2025 Venatici. Alle Rechte vorbehalten.' }}
       </p>
-
     </div>
   </div>
 </footer>
@@ -35,18 +30,8 @@
 {
   "name": "Footer",
   "settings": [
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "Footer menu",
-      "default": "footer"
-    },
-    {
-      "type": "text",
-      "id": "copyright",
-      "label": "Copyright text",
-      "default": "© 2025 Venatici. All rights reserved."
-    }
+    { "type": "link_list", "id": "menu", "label": "Footer-Menü", "default": "footer" },
+    { "type": "text", "id": "copyright", "label": "Copyright-Text", "default": "© 2025 Venatici. Alle Rechte vorbehalten." }
   ]
 }
 {% endschema %}

@@ -1,24 +1,19 @@
 <section class="fragrance-story section-padding" id="fragrance-story">
   <div class="fragrance-story__inner">
-
     <p class="label fragrance-story__label fade-in-up">
-      {{ section.settings.label | default: 'The Story' }}
+      {{ section.settings.label | default: 'Die Geschichte' }}
     </p>
-
     {% if section.settings.quote != blank %}
       <blockquote class="fragrance-story__quote fade-in-up">
         {{ section.settings.quote }}
       </blockquote>
     {% endif %}
-
     <div class="fragrance-story__divider fade-in-up"></div>
-
     {% if section.settings.body != blank %}
       <div class="fragrance-story__body body-text fade-in-up">
         {{ section.settings.body }}
       </div>
     {% endif %}
-
   </div>
 </section>
 
@@ -26,29 +21,10 @@
 {
   "name": "Fragrance Story",
   "settings": [
-    {
-      "type": "text",
-      "id": "label",
-      "label": "Section label",
-      "default": "The Story"
-    },
-    {
-      "type": "textarea",
-      "id": "quote",
-      "label": "Pull quote",
-      "default": "Born from the silence of a moonlit night — a fragrance that speaks before words do."
-    },
-    {
-      "type": "richtext",
-      "id": "body",
-      "label": "Body text",
-      "default": "<p>Venatici Nuit De Lune is a rare olfactory journey into the depths of night. Inspired by the quiet grandeur of starlit skies and the warmth of ancient woods, this fragrance weaves together the finest raw materials from around the world into a composition of extraordinary depth and longevity.</p>"
-    }
+    { "type": "text", "id": "label", "label": "Abschnitts-Label", "default": "Die Geschichte" },
+    { "type": "textarea", "id": "quote", "label": "Zitat", "default": "Geboren aus der Stille einer mondbeglänzten Nacht — ein Duft, der spricht, bevor Worte es tun." },
+    { "type": "richtext", "id": "body", "label": "Fließtext", "default": "<p>Venatici Nuit De Lune ist eine seltene olfaktorische Reise in die Tiefen der Nacht. Inspiriert von der stillen Erhabenheit sternenklarer Himmel und der Wärme uralter Wälder, verwebt dieser Duft die feinsten Rohstoffe aus aller Welt zu einer Komposition von außerordentlicher Tiefe und Langlebigkeit.</p>" }
   ],
-  "presets": [
-    {
-      "name": "Fragrance Story"
-    }
-  ]
+  "presets": [{ "name": "Fragrance Story" }]
 }
 {% endschema %}

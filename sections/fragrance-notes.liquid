@@ -1,28 +1,33 @@
-<section class="fragrance-notes section-padding" id="fragrance-notes">
+<section class="fragrance-notes-akte" id="fragrance-notes">
   <div class="container">
 
-    <div class="fragrance-notes__heading fade-in-up">
-      <p class="label" style="margin-bottom: 0.8rem;">
-        {{ section.settings.label | default: 'Composition' }}
-      </p>
-      <h2 class="h2">{{ section.settings.heading | default: 'The Notes' }}</h2>
-    </div>
+    <h2 class="akte-heading fade-in-up">
+      {{ section.settings.heading_plain | default: 'Die Drei' }}
+      <em>{{ section.settings.heading_italic | default: 'Akte' }}</em>
+    </h2>
 
-    <div class="fragrance-notes__grid">
+    <div class="akte-grid">
+      {% assign roman = 'I.,II.,III.' | split: ',' %}
       {% for block in section.blocks %}
         {% if block.type == 'note_tier' %}
-          <div class="note-tier fade-in-up" {{ block.shopify_attributes }}>
-            <div class="note-tier__ornament" aria-hidden="true">◆</div>
-            <p class="label note-tier__label">{{ block.settings.tier_label }}</p>
-            <ul class="note-tier__list">
-              {% assign notes = block.settings.notes_list | split: "\n" %}
-              {% for note in notes %}
-                {% assign note_trimmed = note | strip %}
-                {% if note_trimmed != blank %}
-                  <li class="note-tier__item">{{ note_trimmed }}</li>
-                {% endif %}
-              {% endfor %}
-            </ul>
+          <div class="akte-card fade-in-up" {{ block.shopify_attributes }}>
+            <div class="akte-card__inner">
+              <div class="akte-numeral">{{ roman[forloop.index0] }}</div>
+              <p class="akte-label">{{ block.settings.tier_label }}</p>
+              <h3 class="akte-subtitle">{{ block.settings.tier_subtitle }}</h3>
+              <ul class="akte-notes">
+                {% assign notes = block.settings.notes_list | split: "\n" %}
+                {% for note in notes %}
+                  {% assign note_trimmed = note | strip %}
+                  {% if note_trimmed != blank %}
+                    <li class="akte-note-item">{{ note_trimmed }}</li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+              {% if block.settings.tier_quote != blank %}
+                <p class="akte-quote">„{{ block.settings.tier_quote }}"</p>
+              {% endif %}
+            </div>
           </div>
         {% endif %}
       {% endfor %}
@@ -37,33 +42,45 @@
   "settings": [
     {
       "type": "text",
-      "id": "label",
-      "label": "Section label",
-      "default": "Composition"
+      "id": "heading_plain",
+      "label": "Überschrift (normal)",
+      "default": "Die Drei"
     },
     {
       "type": "text",
-      "id": "heading",
-      "label": "Section heading",
-      "default": "The Notes"
+      "id": "heading_italic",
+      "label": "Überschrift (kursiv gold)",
+      "default": "Akte"
     }
   ],
   "blocks": [
     {
       "type": "note_tier",
-      "name": "Note Tier",
+      "name": "Akt",
       "settings": [
         {
           "type": "text",
           "id": "tier_label",
-          "label": "Tier label",
-          "default": "Top Notes"
+          "label": "Kategorie (z.B. KOPFNOTEN)",
+          "default": "KOPFNOTEN"
+        },
+        {
+          "type": "text",
+          "id": "tier_subtitle",
+          "label": "Poetischer Titel",
+          "default": "Der erste Atemzug"
         },
         {
           "type": "textarea",
           "id": "notes_list",
-          "label": "Notes (one per line)",
-          "default": "Bergamot\nBlack Pepper\nCardamom"
+          "label": "Noten (eine pro Zeile)",
+          "default": "Kokosnuss\nHaselnuss"
+        },
+        {
+          "type": "textarea",
+          "id": "tier_quote",
+          "label": "Zitat",
+          "default": "Cremig, samten, verführerisch — wie warme Mandelmilch im Mondlicht."
         }
       ]
     }
@@ -75,22 +92,28 @@
         {
           "type": "note_tier",
           "settings": {
-            "tier_label": "Top Notes",
-            "notes_list": "Bergamot\nBlack Pepper\nCardamom"
+            "tier_label": "KOPFNOTEN",
+            "tier_subtitle": "Der erste Atemzug",
+            "notes_list": "Kokosnuss\nHaselnuss",
+            "tier_quote": "Cremig, samten, verführerisch — wie warme Mandelmilch im Mondlicht."
           }
         },
         {
           "type": "note_tier",
           "settings": {
-            "tier_label": "Heart Notes",
-            "notes_list": "Bulgarian Rose\nJasmine Sambac\nIris"
+            "tier_label": "HERZNOTEN",
+            "tier_subtitle": "Die Seele des Dufts",
+            "notes_list": "Rose\nNeroli",
+            "tier_quote": "Blühend und zugleich strahlend — das geheime Herz der Komposition."
           }
         },
         {
           "type": "note_tier",
           "settings": {
-            "tier_label": "Base Notes",
-            "notes_list": "Oud\nAmber\nSandalwood\nMusk"
+            "tier_label": "BASISNOTEN",
+            "tier_subtitle": "Das Fundament",
+            "notes_list": "Vanille\nMoschus\nZedernholz",
+            "tier_quote": "Die letzte Erinnerung — warm, holzig, von dauerhafter Tiefe."
           }
         }
       ]

@@ -1,14 +1,12 @@
 {% if section.blocks.size > 0 %}
 <section class="testimonials section-padding">
   <div class="container">
-
     <div class="testimonials__heading fade-in-up">
       <p class="label" style="margin-bottom: 0.8rem;">
-        {{ section.settings.label | default: 'Reviews' }}
+        {{ section.settings.label | default: 'Bewertungen' }}
       </p>
-      <h2 class="h2">{{ section.settings.heading | default: 'What They Say' }}</h2>
+      <h2 class="h2">{{ section.settings.heading | default: 'Was sie sagen' }}</h2>
     </div>
-
     <div class="testimonials__grid">
       {% for block in section.blocks %}
         {% if block.type == 'testimonial' %}
@@ -23,7 +21,6 @@
         {% endif %}
       {% endfor %}
     </div>
-
   </div>
 </section>
 {% endif %}
@@ -32,42 +29,17 @@
 {
   "name": "Testimonials",
   "settings": [
-    {
-      "type": "text",
-      "id": "label",
-      "label": "Section label",
-      "default": "Reviews"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Section heading",
-      "default": "What They Say"
-    }
+    { "type": "text", "id": "label", "label": "Abschnitts-Label", "default": "Bewertungen" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Was sie sagen" }
   ],
   "blocks": [
     {
       "type": "testimonial",
-      "name": "Testimonial",
+      "name": "Bewertung",
       "settings": [
-        {
-          "type": "textarea",
-          "id": "quote",
-          "label": "Quote",
-          "default": "An extraordinary fragrance — mysterious, deep, unforgettable. It stayed with me for over twelve hours."
-        },
-        {
-          "type": "text",
-          "id": "author",
-          "label": "Author name",
-          "default": "— M. Laurent"
-        },
-        {
-          "type": "text",
-          "id": "origin",
-          "label": "Location or subtitle",
-          "default": "Paris, France"
-        }
+        { "type": "textarea", "id": "quote", "label": "Zitat", "default": "Ein außergewöhnlicher Duft — geheimnisvoll, tief, unvergesslich. Er blieb über zwölf Stunden bei mir." },
+        { "type": "text", "id": "author", "label": "Name", "default": "— M. Laurent" },
+        { "type": "text", "id": "origin", "label": "Ort", "default": "Paris, Frankreich" }
       ]
     }
   ],
@@ -75,22 +47,8 @@
     {
       "name": "Testimonials",
       "blocks": [
-        {
-          "type": "testimonial",
-          "settings": {
-            "quote": "An extraordinary fragrance — mysterious, deep, unforgettable. It stayed with me for over twelve hours.",
-            "author": "— M. Laurent",
-            "origin": "Paris, France"
-          }
-        },
-        {
-          "type": "testimonial",
-          "settings": {
-            "quote": "Nuit De Lune is unlike anything I have encountered before. Elegant, confident, and deeply sensual.",
-            "author": "— K. Hoffmann",
-            "origin": "Berlin, Germany"
-          }
-        }
+        { "type": "testimonial", "settings": { "quote": "Ein außergewöhnlicher Duft — geheimnisvoll, tief, unvergesslich. Er blieb über zwölf Stunden bei mir.", "author": "— M. Laurent", "origin": "Paris, Frankreich" } },
+        { "type": "testimonial", "settings": { "quote": "Nuit De Lune ist wie nichts, was ich je erlebt habe. Elegant, selbstbewusst und zutiefst sinnlich.", "author": "— K. Hoffmann", "origin": "Berlin, Deutschland" } }
       ]
     }
   ]

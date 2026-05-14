@@ -1,27 +1,25 @@
 {
-  "general": {
-    "currency_symbol": "€"
-  },
+  "general": { "currency_symbol": "€" },
   "cart": {
-    "title": "Your Cart",
-    "empty": "Your cart is empty.",
-    "add_to_cart": "Add to Cart",
-    "adding": "Adding…",
-    "view_cart": "View Cart",
-    "checkout": "Checkout",
-    "subtotal": "Subtotal",
-    "remove": "Remove",
-    "close": "Close"
+    "title": "Dein Warenkorb",
+    "empty": "Dein Warenkorb ist leer.",
+    "add_to_cart": "In den Warenkorb",
+    "adding": "Wird hinzugefügt…",
+    "view_cart": "Warenkorb ansehen",
+    "checkout": "Zur Kasse",
+    "subtotal": "Zwischensumme",
+    "remove": "Entfernen",
+    "close": "Schließen"
   },
   "product": {
-    "sold_out": "Sold Out",
-    "unavailable": "Unavailable",
-    "quantity": "Quantity"
+    "sold_out": "Ausverkauft",
+    "unavailable": "Nicht verfügbar",
+    "quantity": "Menge"
   },
   "accessibility": {
-    "open_cart": "Open cart",
-    "close_cart": "Close cart",
-    "close_menu": "Close menu",
-    "open_menu": "Open menu"
+    "open_cart": "Warenkorb öffnen",
+    "close_cart": "Warenkorb schließen",
+    "close_menu": "Menü schließen",
+    "open_menu": "Menü öffnen"
   }
 }
