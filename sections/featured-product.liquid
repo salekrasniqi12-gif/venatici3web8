@@ -10,17 +10,17 @@
       {% if product != blank and product.featured_image %}
         <img
           class="featured-product__image"
-          src="{{ product.featured_image | image_url: width: 1000 }}"
+          src="{{ product.featured_image | image_url: width: 1200 }}"
           alt="{{ product.featured_image.alt | default: product.title | escape }}"
-          width="1000"
+          width="1200"
           loading="eager"
         >
       {% elsif section.settings.fallback_image %}
         <img
           class="featured-product__image"
-          src="{{ section.settings.fallback_image | image_url: width: 1000 }}"
+          src="{{ section.settings.fallback_image | image_url: width: 1200 }}"
           alt="Venatici Nuit De Lune"
-          width="1000"
+          width="1200"
           loading="eager"
         >
       {% else %}
@@ -38,15 +38,31 @@
       {% if product != blank %}
         <h2 class="featured-product__title fade-in-up">{{ product.title }}</h2>
 
-        <div class="featured-product__price fade-in-up">
-          {{ product.price | money }}
-        </div>
+        {% if product.price > 0 %}
+          <div class="featured-product__price fade-in-up">
+            {{ product.price | money }}
+          </div>
+        {% elsif section.settings.fallback_price != blank %}
+          <div class="featured-product__price fade-in-up">
+            {{ section.settings.fallback_price }}
+          </div>
+        {% endif %}
 
         {% if product.description != blank %}
           <div class="featured-product__description body-text fade-in-up">
             {{ product.description }}
           </div>
+        {% else %}
+          <div class="featured-product__description body-text fade-in-up">
+            Eine seltene olfaktorische Reise in die Tiefen der Nacht. Inspiriert von der stillen Erhabenheit sternenklarer Himmel — von außerordentlicher Tiefe und Langlebigkeit.
+          </div>
         {% endif %}
+
+        <ul class="featured-product__notes-inline fade-in-up">
+          <li><span class="fp-note-tier">Kopf</span><span class="fp-note-list">Kokosnuss · Haselnuss</span></li>
+          <li><span class="fp-note-tier">Herz</span><span class="fp-note-list">Rose · Neroli</span></li>
+          <li><span class="fp-note-tier">Basis</span><span class="fp-note-list">Vanille · Moschus · Zedernholz</span></li>
+        </ul>
 
         <form action="/cart/add" method="post" data-atc-form class="fade-in-up">
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
@@ -98,10 +114,15 @@
         </form>
 
       {% else %}
-        <h2 class="featured-product__title">Venatici Nuit De Lune</h2>
-        <p class="featured-product__description body-text">
-          Wähle ein Produkt im Theme-Editor aus.
-        </p>
+        <h2 class="featured-product__title fade-in-up">Venatici Nuit De Lune</h2>
+        <div class="featured-product__description body-text fade-in-up">
+          Eine seltene olfaktorische Reise in die Tiefen der Nacht. Inspiriert von der stillen Erhabenheit sternenklarer Himmel — von außerordentlicher Tiefe und Langlebigkeit.
+        </div>
+        <ul class="featured-product__notes-inline fade-in-up">
+          <li><span class="fp-note-tier">Kopf</span><span class="fp-note-list">Kokosnuss · Haselnuss</span></li>
+          <li><span class="fp-note-tier">Herz</span><span class="fp-note-list">Rose · Neroli</span></li>
+          <li><span class="fp-note-tier">Basis</span><span class="fp-note-list">Vanille · Moschus · Zedernholz</span></li>
+        </ul>
       {% endif %}
     </div>
 
@@ -114,6 +135,7 @@
   "settings": [
     { "type": "product", "id": "product", "label": "Produkt" },
     { "type": "image_picker", "id": "fallback_image", "label": "Produktbild (falls kein Produkt verknüpft)" },
+    { "type": "text", "id": "fallback_price", "label": "Preis-Anzeige (z.B. €79,00)", "default": "€79,00" },
     { "type": "text", "id": "section_label", "label": "Abschnitts-Label", "default": "Der Duft" },
     { "type": "checkbox", "id": "show_qty", "label": "Mengenauswahl anzeigen", "default": true }
   ],
