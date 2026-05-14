@@ -861,7 +861,7 @@ h1, h2, h3, h4, h5, h6,
   font-weight: 400;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #3a3632;
+  color: var(--color-text-muted);
   margin-bottom: 1.2rem;
   margin-top: 1rem;
 }
@@ -886,13 +886,13 @@ h1, h2, h3, h4, h5, h6,
 .akte-note-item {
   font-family: var(--font-body);
   font-size: 0.85rem;
-  color: #4a4440;
+  color: var(--color-text-muted);
   letter-spacing: 0.05em;
   transition: color 0.3s ease;
 }
 
 .akte-card:hover .akte-note-item {
-  color: var(--color-text-muted);
+  color: var(--color-text);
 }
 
 .akte-note-item::before {
@@ -907,7 +907,7 @@ h1, h2, h3, h4, h5, h6,
   font-style: italic;
   font-size: 0.88rem;
   line-height: 1.7;
-  color: #2e2a27;
+  color: #6a6058;
   margin-top: auto;
   padding-top: 1.5rem;
   border-top: 1px solid var(--color-border);
@@ -915,7 +915,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .akte-card:hover .akte-quote {
-  color: #5a5248;
+  color: var(--color-text-muted);
 }
 
 /* stagger the cards more dramatically */
