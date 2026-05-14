@@ -644,12 +644,13 @@ h1, h2, h3, h4, h5, h6,
 
 .product-stats__number {
   font-family: var(--font-heading);
-  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-size: clamp(2.5rem, 6vw, 6rem);
   font-weight: 300;
   font-style: italic;
   color: var(--color-accent);
   line-height: 1;
   margin-bottom: 1rem;
+  white-space: nowrap;
 }
 
 .product-stats__number em {
