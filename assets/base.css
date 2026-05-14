@@ -933,6 +933,38 @@ h1, h2, h3, h4, h5, h6,
   margin-bottom: 5rem;
 }
 
+.testimonials__rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.testimonials__stars {
+  font-size: 1.1rem;
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+}
+
+.testimonials__rating-text {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+}
+
+.testimonials__rating-text span {
+  color: #5a5450;
+}
+
+.testimonials__stars-small {
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  letter-spacing: 0.15em;
+  margin-bottom: 1.2rem;
+  opacity: 0.9;
+}
+
 .testimonials__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

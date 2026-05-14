@@ -6,12 +6,21 @@
         {{ section.settings.label | default: 'Bewertungen' }}
       </p>
       <h2 class="h2">{{ section.settings.heading | default: 'Was sie sagen' }}</h2>
+      <div class="testimonials__rating">
+        <div class="testimonials__stars" aria-hidden="true">
+          ★★★★★
+        </div>
+        <p class="testimonials__rating-text">
+          {{ section.settings.rating | default: '4.7' }}
+          <span>/ 5 &nbsp;·&nbsp; {{ section.settings.review_count | default: '7.000+' }} Bewertungen</span>
+        </p>
+      </div>
     </div>
     <div class="testimonials__grid">
       {% for block in section.blocks %}
         {% if block.type == 'testimonial' %}
           <div class="testimonial fade-in-up" {{ block.shopify_attributes }}>
-            <div class="testimonial__mark" aria-hidden="true">&ldquo;</div>
+            <div class="testimonial__stars-small" aria-label="5 von 5 Sternen">★★★★★</div>
             <p class="testimonial__text">{{ block.settings.quote }}</p>
             <p class="testimonial__author">{{ block.settings.author }}</p>
             {% if block.settings.origin != blank %}
@@ -30,7 +39,9 @@
   "name": "Testimonials",
   "settings": [
     { "type": "text", "id": "label", "label": "Abschnitts-Label", "default": "Bewertungen" },
-    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Was sie sagen" }
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Was sie sagen" },
+    { "type": "text", "id": "rating", "label": "Bewertung (z.B. 4.7)", "default": "4.7" },
+    { "type": "text", "id": "review_count", "label": "Anzahl Bewertungen", "default": "7.000+" }
   ],
   "blocks": [
     {
