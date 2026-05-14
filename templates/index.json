@@ -84,9 +84,33 @@
             "author": "— K. Hoffmann",
             "origin": "Berlin, Deutschland"
           }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Dieser Duft ist reine Poesie — ich trage ihn jeden Abend. Er ist unverwechselbar und von bemerkenswerter Langlebigkeit.",
+            "author": "— S. Müller",
+            "origin": "Wien, Österreich"
+          }
+        },
+        "t4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Noch nie hat ein Duft so viele Komplimente bekommen. Jeder fragt mich, was ich trage.",
+            "author": "— A. Schneider",
+            "origin": "Zürich, Schweiz"
+          }
+        },
+        "t5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Warm, dunkel, verführerisch. Nuit De Lune ist mein absoluter Lieblingsduft — seit dem ersten Spray.",
+            "author": "— L. Dubois",
+            "origin": "Lyon, Frankreich"
+          }
         }
       },
-      "block_order": ["t1", "t2"]
+      "block_order": ["t1", "t2", "t3", "t4", "t5"]
     }
   },
   "order": [

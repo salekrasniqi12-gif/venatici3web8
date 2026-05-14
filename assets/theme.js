@@ -307,6 +307,56 @@
     }
   };
 
+  // ── Testimonial Slider ───────────────────────────────────────
+  const TestimonialSlider = {
+    init() {
+      const slider = document.querySelector('[data-testimonial-slider]');
+      if (!slider) return;
+
+      const track = slider.querySelector('[data-testimonial-track]');
+      const dotsContainer = slider.querySelector('[data-testimonial-dots]');
+      const slides = track.querySelectorAll('.testimonial');
+      const total = slides.length;
+      let current = 0;
+      let startX = 0;
+      let isDragging = false;
+
+      if (total <= 1) return;
+
+      // build dots
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'testimonials__dot' + (i === 0 ? ' testimonials__dot--active' : '');
+        dot.setAttribute('aria-label', `Bewertung ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      });
+
+      function goTo(index) {
+        current = (index + total) % total;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dotsContainer.querySelectorAll('.testimonials__dot').forEach((d, i) => {
+          d.classList.toggle('testimonials__dot--active', i === current);
+        });
+      }
+
+      slider.querySelector('[data-testimonial-prev]').addEventListener('click', () => goTo(current - 1));
+      slider.querySelector('[data-testimonial-next]').addEventListener('click', () => goTo(current + 1));
+
+      // touch/swipe
+      track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; }, { passive: true });
+      track.addEventListener('touchend', e => {
+        if (!isDragging) return;
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+        isDragging = false;
+      });
+
+      // auto-advance
+      setInterval(() => goTo(current + 1), 6000);
+    }
+  };
+
   // ── Init ─────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
     Header.init();
@@ -318,6 +368,7 @@
     SmoothScroll.init();
     Hero.init();
     CartAPI.renderDrawer();
+    TestimonialSlider.init();
   });
 
 })();

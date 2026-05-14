@@ -7,28 +7,39 @@
       </p>
       <h2 class="h2">{{ section.settings.heading | default: 'Was sie sagen' }}</h2>
       <div class="testimonials__rating">
-        <div class="testimonials__stars" aria-hidden="true">
-          ★★★★★
-        </div>
+        <div class="testimonials__stars" aria-hidden="true">★★★★★</div>
         <p class="testimonials__rating-text">
           {{ section.settings.rating | default: '4.7' }}
           <span>/ 5 &nbsp;·&nbsp; {{ section.settings.review_count | default: '7.000+' }} Bewertungen</span>
         </p>
       </div>
     </div>
-    <div class="testimonials__grid">
-      {% for block in section.blocks %}
-        {% if block.type == 'testimonial' %}
-          <div class="testimonial fade-in-up" {{ block.shopify_attributes }}>
-            <div class="testimonial__stars-small" aria-label="5 von 5 Sternen">★★★★★</div>
-            <p class="testimonial__text">{{ block.settings.quote }}</p>
-            <p class="testimonial__author">{{ block.settings.author }}</p>
-            {% if block.settings.origin != blank %}
-              <p class="testimonial__origin">{{ block.settings.origin }}</p>
-            {% endif %}
-          </div>
-        {% endif %}
-      {% endfor %}
+
+    <div class="testimonials__slider" data-testimonial-slider>
+      <div class="testimonials__track" data-testimonial-track>
+        {% for block in section.blocks %}
+          {% if block.type == 'testimonial' %}
+            <div class="testimonial" {{ block.shopify_attributes }}>
+              <div class="testimonial__stars-small" aria-label="5 von 5 Sternen">★★★★★</div>
+              <p class="testimonial__text">{{ block.settings.quote }}</p>
+              <p class="testimonial__author">{{ block.settings.author }}</p>
+              {% if block.settings.origin != blank %}
+                <p class="testimonial__origin">{{ block.settings.origin }}</p>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="testimonials__controls">
+        <button class="testimonials__btn" data-testimonial-prev aria-label="Vorherige Bewertung">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 4l-6 6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="testimonials__dots" data-testimonial-dots></div>
+        <button class="testimonials__btn" data-testimonial-next aria-label="Nächste Bewertung">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 </section>
@@ -59,7 +70,8 @@
       "name": "Testimonials",
       "blocks": [
         { "type": "testimonial", "settings": { "quote": "Ein außergewöhnlicher Duft — geheimnisvoll, tief, unvergesslich. Er blieb über zwölf Stunden bei mir.", "author": "— M. Laurent", "origin": "Paris, Frankreich" } },
-        { "type": "testimonial", "settings": { "quote": "Nuit De Lune ist wie nichts, was ich je erlebt habe. Elegant, selbstbewusst und zutiefst sinnlich.", "author": "— K. Hoffmann", "origin": "Berlin, Deutschland" } }
+        { "type": "testimonial", "settings": { "quote": "Nuit De Lune ist wie nichts, was ich je erlebt habe. Elegant, selbstbewusst und zutiefst sinnlich.", "author": "— K. Hoffmann", "origin": "Berlin, Deutschland" } },
+        { "type": "testimonial", "settings": { "quote": "Dieser Duft ist reine Poesie — ich trage ihn jeden Abend. Er ist unverwechselbar und von bemerkenswerter Langlebigkeit.", "author": "— S. Müller", "origin": "Wien, Österreich" } }
       ]
     }
   ]
