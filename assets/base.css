@@ -666,14 +666,14 @@ h1, h2, h3, h4, h5, h6,
 .featured-product__grid {
   display: grid;
   grid-template-columns: 50% 50%;
-  min-height: 65vh;
-  max-height: 700px;
+  align-items: stretch;
 }
 
 .featured-product__image-wrap {
   position: relative;
   overflow: hidden;
   background: var(--color-surface);
+  min-height: 600px;
   clip-path: inset(100% 0 0 0);
   animation: fp-wrap-reveal 1.4s cubic-bezier(0.76, 0, 0.24, 1) 0.2s forwards;
 }
@@ -686,6 +686,8 @@ h1, h2, h3, h4, h5, h6,
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
+  display: block;
   transform: scale(1.12);
   animation:
     fp-zoom-in 1.6s cubic-bezier(0.76, 0, 0.24, 1) 0.2s forwards,
