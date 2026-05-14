@@ -1096,6 +1096,25 @@ h1, h2, h3, h4, h5, h6,
   text-indent: 0.45em;
 }
 
+.site-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.site-footer__legal a {
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast);
+}
+
+.site-footer__legal a:hover {
+  color: var(--color-accent);
+}
+
 .site-footer__nav {
   display: flex;
   flex-wrap: wrap;

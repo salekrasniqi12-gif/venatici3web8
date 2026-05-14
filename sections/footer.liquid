@@ -1,14 +1,9 @@
 <footer class="site-footer" role="contentinfo">
   <div class="container">
     <div class="site-footer__inner">
+
       <div class="site-footer__logo">{{ shop.name }}</div>
-      {% if section.settings.menu != blank %}
-        <nav class="site-footer__nav" aria-label="Footer Navigation">
-          {% for link in linklists[section.settings.menu].links %}
-            <a href="{{ link.url }}">{{ link.title }}</a>
-          {% endfor %}
-        </nav>
-      {% endif %}
+
       {% if settings.social_instagram != blank or settings.social_tiktok != blank %}
         <div class="site-footer__social">
           {% if settings.social_instagram != blank %}
@@ -19,9 +14,24 @@
           {% endif %}
         </div>
       {% endif %}
+
+      <nav class="site-footer__legal" aria-label="Rechtliche Links">
+        <a href="/policies/privacy-policy">Datenschutzerklärung</a>
+        <a href="/policies/refund-policy">Widerrufsrecht</a>
+        <a href="/policies/terms-of-service">AGB</a>
+        <a href="/policies/shipping-policy">Versand</a>
+        {% if section.settings.impressum_url != blank %}
+          <a href="{{ section.settings.impressum_url }}">Impressum</a>
+        {% endif %}
+        {% if section.settings.contact_url != blank %}
+          <a href="{{ section.settings.contact_url }}">Kontakt</a>
+        {% endif %}
+      </nav>
+
       <p class="site-footer__copy">
         {{ section.settings.copyright | default: '© 2025 Venatici. Alle Rechte vorbehalten.' }}
       </p>
+
     </div>
   </div>
 </footer>
@@ -30,8 +40,9 @@
 {
   "name": "Footer",
   "settings": [
-    { "type": "link_list", "id": "menu", "label": "Footer-Menü", "default": "footer" },
-    { "type": "text", "id": "copyright", "label": "Copyright-Text", "default": "© 2025 Venatici. Alle Rechte vorbehalten." }
+    { "type": "text", "id": "copyright", "label": "Copyright-Text", "default": "© 2025 Venatici. Alle Rechte vorbehalten." },
+    { "type": "url", "id": "impressum_url", "label": "Impressum-Link" },
+    { "type": "url", "id": "contact_url", "label": "Kontakt-Link" }
   ]
 }
 {% endschema %}
