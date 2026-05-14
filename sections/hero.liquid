@@ -2,7 +2,17 @@
 
   {% if section.settings.video_url != blank %}
     <video
-      class="hero__video"
+      class="hero__video hero__video--bg"
+      src="{{ section.settings.video_url }}"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      aria-hidden="true"
+    ></video>
+    <video
+      class="hero__video hero__video--main"
       src="{{ section.settings.video_url }}"
       autoplay
       muted
