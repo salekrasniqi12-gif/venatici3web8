@@ -20,12 +20,8 @@
         <a href="/policies/refund-policy">Widerrufsrecht</a>
         <a href="/policies/terms-of-service">AGB</a>
         <a href="/policies/shipping-policy">Versand</a>
-        {% if section.settings.impressum_url != blank %}
-          <a href="{{ section.settings.impressum_url }}">Impressum</a>
-        {% endif %}
-        {% if section.settings.contact_url != blank %}
-          <a href="{{ section.settings.contact_url }}">Kontakt</a>
-        {% endif %}
+        <a href="/policies/legal-notice">Impressum</a>
+        <a href="/policies/contact-information">Kontakt</a>
       </nav>
 
       <p class="site-footer__copy">
@@ -40,9 +36,7 @@
 {
   "name": "Footer",
   "settings": [
-    { "type": "text", "id": "copyright", "label": "Copyright-Text", "default": "© 2025 Venatici. Alle Rechte vorbehalten." },
-    { "type": "url", "id": "impressum_url", "label": "Impressum-Link" },
-    { "type": "url", "id": "contact_url", "label": "Kontakt-Link" }
+    { "type": "text", "id": "copyright", "label": "Copyright-Text", "default": "© 2025 Venatici. Alle Rechte vorbehalten." }
   ]
 }
 {% endschema %}
