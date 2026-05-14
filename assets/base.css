@@ -1485,7 +1485,9 @@ h1, h2, h3, h4, h5, h6,
   }
 
   .featured-product__notes-inline {
-    display: none;
+    gap: 0.35rem;
+    margin-bottom: 1.2rem;
+    padding-top: 1rem;
   }
 
   .qty-wrap {
