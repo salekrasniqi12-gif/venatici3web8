@@ -97,13 +97,15 @@
             </div>
           {% endif %}
 
+          {% assign is_available = product.available %}
+          {% if section.settings.force_available %}{% assign is_available = true %}{% endif %}
+
           <button
             type="submit"
             class="btn btn--primary"
             data-atc-btn
-            {% unless product.available %}aria-disabled="true"{% endunless %}
           >
-            {% if product.available %}
+            {% if is_available %}
               {{ 'cart.add_to_cart' | t }}
             {% else %}
               {{ 'product.sold_out' | t }}
@@ -137,7 +139,8 @@
     { "type": "image_picker", "id": "fallback_image", "label": "Produktbild (falls kein Produkt verknüpft)" },
     { "type": "text", "id": "fallback_price", "label": "Preis-Anzeige (z.B. €79,00)", "default": "€79,00" },
     { "type": "text", "id": "section_label", "label": "Abschnitts-Label", "default": "Der Duft" },
-    { "type": "checkbox", "id": "show_qty", "label": "Mengenauswahl anzeigen", "default": true }
+    { "type": "checkbox", "id": "show_qty", "label": "Mengenauswahl anzeigen", "default": true },
+    { "type": "checkbox", "id": "force_available", "label": "Button immer als 'In den Warenkorb' anzeigen", "default": true }
   ],
   "presets": [{ "name": "Featured Product" }]
 }

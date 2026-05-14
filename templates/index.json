@@ -16,7 +16,8 @@
       "settings": {
         "section_label": "Der Duft",
         "fallback_price": "€79,00",
-        "show_qty": true
+        "show_qty": true,
+        "force_available": true
       }
     },
     "fragrance-story": {
