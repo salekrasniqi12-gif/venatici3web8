@@ -591,7 +591,43 @@ h1, h2, h3, h4, h5, h6,
   50% { opacity: 1; transform: scaleY(0.6); }
 }
 
-/* ── 9. Product Stats ─────────────────────────────────────── */
+/* ── 9. Marquee Banner ────────────────────────────────────── */
+.marquee-banner {
+  overflow: hidden;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.1rem 0;
+  white-space: nowrap;
+}
+
+.marquee-banner__track {
+  display: inline-flex;
+  gap: 2.5rem;
+  align-items: center;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-banner__track span {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.marquee-banner__dot {
+  color: var(--color-accent) !important;
+  font-size: 0.55rem !important;
+  letter-spacing: 0 !important;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── 10. Product Stats ────────────────────────────────────── */
 .product-stats {
   background: var(--color-bg);
   padding: 8rem 2rem;

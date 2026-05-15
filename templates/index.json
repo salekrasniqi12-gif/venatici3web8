@@ -11,6 +11,10 @@
         "overlay_opacity": 65
       }
     },
+    "marquee-banner": {
+      "type": "marquee-banner",
+      "settings": {}
+    },
     "product-stats": {
       "type": "product-stats",
       "settings": {}
@@ -122,6 +126,7 @@
   },
   "order": [
     "hero",
+    "marquee-banner",
     "product-stats",
     "featured-product",
     "fragrance-story",
