@@ -13,14 +13,17 @@
     init() {
       this.el = document.querySelector('.site-header');
       if (!this.el) return;
+      this.el.classList.add('site-header--expanded');
       window.addEventListener('scroll', this.onScroll.bind(this), { passive: true });
       this.onScroll();
     },
 
     onScroll() {
       if (window.scrollY > this.threshold) {
+        this.el.classList.remove('site-header--expanded');
         this.el.classList.add('site-header--scrolled');
       } else {
+        this.el.classList.add('site-header--expanded');
         this.el.classList.remove('site-header--scrolled');
       }
     }
