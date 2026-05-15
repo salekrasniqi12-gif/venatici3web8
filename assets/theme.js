@@ -457,6 +457,72 @@
     }
   };
 
+  // ── Product Gallery ──────────────────────────────────────────
+  const ProductGallery = {
+    init() {
+      const gallery = document.querySelector('.product-main__gallery');
+      if (!gallery) return;
+
+      const mainImg = gallery.querySelector('.js-product-main-img');
+      const thumbs  = gallery.querySelectorAll('.product-main__thumb');
+
+      thumbs.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          thumbs.forEach(t => t.classList.remove('product-main__thumb--active'));
+          thumb.classList.add('product-main__thumb--active');
+          if (mainImg && thumb.dataset.full) {
+            mainImg.style.opacity = '0';
+            setTimeout(() => {
+              mainImg.src = thumb.dataset.full;
+              mainImg.style.opacity = '1';
+            }, 150);
+          }
+        });
+      });
+    }
+  };
+
+  // ── Sticky ATC ───────────────────────────────────────────────
+  const StickyATC = {
+    init() {
+      const stickyEl  = document.getElementById('product-sticky-atc');
+      const mainBtn   = document.querySelector('.product-main__atc-btn');
+      const stickyBtn = document.querySelector('.js-sticky-atc-trigger');
+
+      if (!stickyEl || !mainBtn) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          stickyEl.classList.toggle('product-sticky-atc--visible', !entry.isIntersecting);
+          stickyEl.setAttribute('aria-hidden', String(entry.isIntersecting));
+        },
+        { threshold: 0 }
+      );
+
+      observer.observe(mainBtn);
+
+      if (stickyBtn) {
+        stickyBtn.addEventListener('click', () => {
+          const form = mainBtn.closest('form');
+          if (form) form.requestSubmit ? form.requestSubmit() : form.submit();
+        });
+      }
+    }
+  };
+
+  // ── Accordion ────────────────────────────────────────────────
+  const Accordion = {
+    init() {
+      document.querySelectorAll('.product-main__accordion-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!expanded));
+          btn.querySelector('.product-main__accordion-chevron').textContent = expanded ? '+' : '−';
+        });
+      });
+    }
+  };
+
   // ── Init ─────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
     Header.init();
@@ -472,6 +538,9 @@
     Parallax.init();
     StatsCounter.init();
     ScrollTilt.init();
+    ProductGallery.init();
+    StickyATC.init();
+    Accordion.init();
   });
 
 })();
