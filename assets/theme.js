@@ -405,6 +405,7 @@
 
     animate(el) {
       const text  = el.textContent.trim();
+      if (text.includes('–') || text.includes('-')) return;
       const match = text.match(/[\d]+/);
       if (!match) return;
 
