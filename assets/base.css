@@ -10,6 +10,8 @@
   --color-text:         #f5f0e8;
   --color-text-muted:   #9a8f7e;
   --color-accent:       #c9a96e;
+  --color-burgundy:     #6B1A2A;
+  --color-burgundy-dim: #3d0f18;
   --color-border:       #2a2a2a;
   --color-overlay:      rgba(10, 10, 10, 0.68);
 
@@ -186,8 +188,9 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .btn--primary:hover {
-  background: var(--color-accent);
-  color: var(--color-bg);
+  background: var(--color-burgundy);
+  border-color: var(--color-burgundy);
+  color: #f5f0e8;
 }
 
 .btn--primary:disabled,
@@ -1056,6 +1059,11 @@ h1, h2, h3, h4, h5, h6,
   color: var(--color-text);
 }
 
+.akte-card:hover .akte-numeral {
+  color: var(--color-burgundy);
+  transition: color 0.4s ease;
+}
+
 .akte-note-item::before {
   content: '–';
   margin-right: 0.7em;
@@ -1086,7 +1094,9 @@ h1, h2, h3, h4, h5, h6,
 
 /* ── 12. Testimonials ─────────────────────────────────────── */
 .testimonials {
-  background: var(--color-bg);
+  background: var(--color-burgundy-dim);
+  border-top: 1px solid var(--color-burgundy);
+  border-bottom: 1px solid var(--color-burgundy);
 }
 
 .testimonials__heading {
