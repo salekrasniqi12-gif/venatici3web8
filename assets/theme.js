@@ -357,6 +357,102 @@
     }
   };
 
+  // ── Parallax ─────────────────────────────────────────────────
+  const Parallax = {
+    items: [],
+
+    init() {
+      const heroContent = document.querySelector('.hero__content');
+      const productImg  = document.querySelector('.featured-product__image-wrap');
+      const storyInner  = document.querySelector('.fragrance-story__inner');
+
+      if (heroContent) this.items.push({ el: heroContent, speed: 0.25, dir: 'up' });
+      if (productImg)  this.items.push({ el: productImg,  speed: 0.08, dir: 'down' });
+      if (storyInner)  this.items.push({ el: storyInner,  speed: 0.1,  dir: 'up' });
+
+      if (!this.items.length) return;
+      window.addEventListener('scroll', this.onScroll.bind(this), { passive: true });
+      this.onScroll();
+    },
+
+    onScroll() {
+      const sy = window.scrollY;
+      this.items.forEach(({ el, speed, dir }) => {
+        const rect   = el.parentElement.getBoundingClientRect();
+        const center = rect.top + rect.height / 2 - window.innerHeight / 2;
+        const offset = center * speed * (dir === 'up' ? -1 : 1);
+        el.style.transform = `translateY(${offset}px)`;
+      });
+    }
+  };
+
+  // ── Stats Counter ────────────────────────────────────────────
+  const StatsCounter = {
+    init() {
+      const numbers = document.querySelectorAll('.product-stats__number');
+      if (!numbers.length) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          observer.unobserve(entry.target);
+          this.animate(entry.target);
+        });
+      }, { threshold: 0.5 });
+
+      numbers.forEach(n => observer.observe(n));
+    },
+
+    animate(el) {
+      const text  = el.textContent.trim();
+      const match = text.match(/[\d]+/);
+      if (!match) return;
+
+      const target  = parseInt(match[0]);
+      const prefix  = text.slice(0, match.index);
+      const suffix  = text.slice(match.index + match[0].length);
+      const duration = 1400;
+      const start    = performance.now();
+
+      const unit = el.querySelector('.product-stats__unit');
+      const unitHTML = unit ? unit.outerHTML : '';
+      const unitText = unit ? unit.textContent : '';
+
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(ease * target);
+        el.innerHTML = prefix + current + unitHTML;
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+
+      requestAnimationFrame(tick);
+    }
+  };
+
+  // ── Scroll Velocity Tilt ─────────────────────────────────────
+  const ScrollTilt = {
+    lastY: 0,
+    cards: [],
+
+    init() {
+      this.cards = [...document.querySelectorAll('.akte-card')];
+      if (!this.cards.length) return;
+      window.addEventListener('scroll', this.onScroll.bind(this), { passive: true });
+    },
+
+    onScroll() {
+      const delta = window.scrollY - this.lastY;
+      this.lastY  = window.scrollY;
+      const tilt  = Math.max(-4, Math.min(4, delta * 0.3));
+      this.cards.forEach((card, i) => {
+        const dir = i % 2 === 0 ? 1 : -1;
+        card.style.transform = `translateY(${tilt * dir}px)`;
+        card.style.transition = 'transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)';
+      });
+    }
+  };
+
   // ── Init ─────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
     Header.init();
@@ -369,6 +465,9 @@
     Hero.init();
     CartAPI.renderDrawer();
     TestimonialSlider.init();
+    Parallax.init();
+    StatsCounter.init();
+    ScrollTilt.init();
   });
 
 })();
