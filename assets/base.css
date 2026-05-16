@@ -1594,6 +1594,37 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
+/* ── Featured Product Trust Badges (dark theme) ─────────── */
+.featured-product__trust {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.fp-trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.fp-trust-badge__icon {
+  font-size: 1rem;
+  color: var(--color-accent);
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+
+.fp-trust-badge__text {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
 /* ============================================================
    PRODUCT MAIN PAGE (Asabi-Style)
    ============================================================ */
@@ -1874,6 +1905,49 @@ body.template-product .cart-count {
 .pm-mc { color: #eb001b; }
 .pm-amex { color: #016fd0; }
 .pm-apple { font-size: 0.58rem; }
+
+/* ── Trust Badges (white product page) ── */
+.product-main__trust {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.trust-badge__icon {
+  font-size: 1.3rem;
+  width: 28px;
+  text-align: center;
+  flex-shrink: 0;
+  color: #0d1b2e;
+}
+
+.trust-badge__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.trust-badge__text strong {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: 0.01em;
+}
+
+.trust-badge__text span {
+  font-size: 0.75rem;
+  color: #888;
+  line-height: 1.4;
+}
 
 /* ── Accordion ── */
 .product-main__accordion {
