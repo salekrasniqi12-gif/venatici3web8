@@ -457,6 +457,30 @@
     }
   };
 
+  // ── Bundle Picker ────────────────────────────────────────────
+  const BundlePicker = {
+    init() {
+      const picker = document.querySelector('.bundle-picker');
+      if (!picker) return;
+
+      const options  = picker.querySelectorAll('.bundle-option');
+      const varInput = document.querySelector('[data-variant-input]');
+      const priceEl  = document.querySelector('.product-main__price');
+
+      options.forEach(opt => {
+        opt.addEventListener('click', () => {
+          options.forEach(o => o.classList.remove('bundle-option--active'));
+          opt.classList.add('bundle-option--active');
+
+          if (varInput) varInput.value = opt.dataset.variantId;
+          if (priceEl && opt.dataset.price) {
+            priceEl.textContent = CartAPI.formatMoney(parseInt(opt.dataset.price, 10));
+          }
+        });
+      });
+    }
+  };
+
   // ── Product Gallery ──────────────────────────────────────────
   const ProductGallery = {
     init() {
@@ -541,6 +565,7 @@
     ProductGallery.init();
     StickyATC.init();
     Accordion.init();
+    BundlePicker.init();
   });
 
 })();

@@ -86,15 +86,40 @@
       {%- endif -%}
     </div>
 
+    <!-- Bundle Picker -->
+    {%- if product.variants.size > 1 -%}
+    <div class="bundle-picker">
+      {%- for variant in product.variants -%}
+        <button
+          type="button"
+          class="bundle-option{% if forloop.first %} bundle-option--active{% endif %}{% if forloop.last %} bundle-option--featured{% endif %}"
+          data-variant-id="{{ variant.id }}"
+          data-price="{{ variant.price }}"
+        >
+          <span class="bundle-option__name">{{ variant.title }}</span>
+          {%- if forloop.last and product.variants.size > 1 -%}
+            {%- assign first_price = product.variants.first.price -%}
+            {%- assign savings = first_price | times: 2 | minus: variant.price -%}
+            {%- if savings > 0 -%}
+              <span class="bundle-option__badge">SPARE {{ savings | money }}</span>
+            {%- endif -%}
+          {%- endif -%}
+          <span class="bundle-option__price">{{ variant.price | money }}</span>
+        </button>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+
     <!-- Form -->
     <form action="/cart/add" method="post" data-atc-form>
       {%- if product.selected_or_first_available_variant -%}
-        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-variant-input>
       {%- else -%}
-        <input type="hidden" name="id" value="">
+        <input type="hidden" name="id" value="" data-variant-input>
       {%- endif -%}
+      <input type="hidden" name="quantity" value="1">
 
-      {%- if section.settings.show_qty -%}
+      {%- if section.settings.show_qty and product.variants.size == 1 -%}
         <div class="product-main__qty">
           <label class="product-main__qty-label">Menge:</label>
           <div class="qty-wrap product-main__qty-wrap">

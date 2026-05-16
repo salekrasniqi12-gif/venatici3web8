@@ -1976,6 +1976,68 @@ body.template-product .cart-count {
 .pm-amex { color: #016fd0; }
 .pm-apple { font-size: 0.58rem; }
 
+/* ── Bundle Picker ── */
+.bundle-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.bundle-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border: 2px solid #e5e5e5;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+}
+
+.bundle-option:hover {
+  border-color: #111;
+}
+
+.bundle-option--active {
+  border-color: #111;
+}
+
+.bundle-option--featured {
+  border-color: #0d1b2e;
+  background: #f8f9fb;
+}
+
+.bundle-option--featured.bundle-option--active {
+  background: #f0f3f8;
+}
+
+.bundle-option__name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111;
+  flex: 1;
+}
+
+.bundle-option__badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  background: #0d1b2e;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+.bundle-option__price {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111;
+  margin-left: auto;
+}
+
 /* ── Trust Badges (white product page) ── */
 .product-main__trust {
   display: flex;
