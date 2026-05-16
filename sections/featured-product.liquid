@@ -63,29 +63,7 @@
 
       {% if product != blank %}
         <form action="/cart/add" method="post" data-atc-form class="fade-in-up">
-          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-
-          {% if product.variants.size > 1 %}
-            <div class="product-options">
-              <label class="product-option__label" for="variant-select-{{ section.id }}">
-                {{ product.options.first }}
-              </label>
-              <select class="variant-select" id="variant-select-{{ section.id }}" name="id">
-                {% for variant in product.variants %}
-                  <option
-                    value="{{ variant.id }}"
-                    data-variant-id="{{ variant.id }}"
-                    data-price="{{ variant.price }}"
-                    data-available="{{ variant.available }}"
-                    {% if variant == product.selected_or_first_available_variant %}selected{% endif %}
-                    {% unless variant.available %}disabled{% endunless %}
-                  >
-                    {{ variant.title }}{% unless variant.available %} – Ausverkauft{% endunless %}
-                  </option>
-                {% endfor %}
-              </select>
-            </div>
-          {% endif %}
+          <input type="hidden" name="id" value="{{ product.variants.first.id }}">
 
           {% if section.settings.show_qty %}
             <div class="qty-wrap">
