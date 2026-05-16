@@ -6,7 +6,11 @@
 <section class="featured-product" id="featured-product" data-product-section>
   <div class="featured-product__grid">
 
-    <div class="featured-product__image-wrap">
+    <a
+      class="featured-product__image-wrap"
+      href="{{ product.url | default: '/products/venatici-nuit-de-lune' }}"
+      aria-label="{{ product.title | default: 'Venatici Nuit De Lune' }}"
+    >
       {% if product != blank and product.featured_image %}
         <img
           class="featured-product__image"
@@ -24,7 +28,7 @@
           loading="eager"
         >
       {% endif %}
-    </div>
+    </a>
 
     <div class="featured-product__info">
       <p class="label featured-product__label fade-in-up">
