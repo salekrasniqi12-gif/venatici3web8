@@ -287,6 +287,26 @@ h1, h2, h3, h4, h5, h6,
   letter-spacing: 0.5em;
 }
 
+/* Kein großes Logo auf der Landing Page — nur auf der Produktseite */
+body.template-index .site-header--expanded,
+body.template-index .site-header--scrolled {
+  height: var(--header-h);
+}
+
+body.template-index .site-header--expanded .site-header__logo {
+  font-size: 0.85rem;
+  letter-spacing: 0.4em;
+}
+
+body.template-index .site-header--expanded .site-header__nav {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.template-index .site-header--expanded {
+  background: transparent;
+}
+
 .site-header__actions {
   display: flex;
   align-items: center;
