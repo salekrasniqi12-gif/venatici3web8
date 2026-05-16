@@ -1531,11 +1531,12 @@ body.template-index .site-header--expanded {
   }
 
   .featured-product__grid {
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 1fr;
   }
 
   .featured-product__image-wrap {
-    min-height: 50vw;
+    min-height: 100vw;
+    max-height: 110vw;
   }
 
   .featured-product__info {
