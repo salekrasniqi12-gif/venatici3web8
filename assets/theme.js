@@ -542,6 +542,8 @@
           const expanded = btn.getAttribute('aria-expanded') === 'true';
           btn.setAttribute('aria-expanded', String(!expanded));
           btn.querySelector('.product-main__accordion-chevron').textContent = expanded ? '+' : '−';
+          const body = btn.nextElementSibling;
+          if (body) body.style.display = expanded ? 'none' : 'block';
         });
       });
     }
