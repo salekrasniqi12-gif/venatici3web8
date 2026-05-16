@@ -109,13 +109,8 @@
       {% endif %}
 
       <!-- Payment Icons -->
-      <div class="fp-payment-icons fade-in-up">
-        <span class="fp-payment-icon pm-paypal">PayPal</span>
-        <span class="fp-payment-icon pm-apple">Apple Pay</span>
-        <span class="fp-payment-icon pm-mc">MC</span>
-        <span class="fp-payment-icon">VISA</span>
-        <span class="fp-payment-icon pm-klarna">Klarna</span>
-        <span class="fp-payment-icon pm-amex">AMEX</span>
+      <div class="fade-in-up">
+        {% render 'payment-icons', style: 'dark' %}
       </div>
 
       <!-- Trust Badges -->

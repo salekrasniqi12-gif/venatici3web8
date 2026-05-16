@@ -1615,6 +1615,27 @@ body.template-index .site-header--expanded {
 }
 
 /* ── Featured Product Payment Icons (dark theme) ─────────── */
+/* ── SVG Payment Icon Row ─────────────────────────────────── */
+.payment-icons-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.payment-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.payment-icon-wrap svg {
+  display: block;
+  border-radius: 4px;
+}
+
+/* Legacy text-only icons (kept for safety) */
 .fp-payment-icons {
   display: flex;
   flex-wrap: wrap;
