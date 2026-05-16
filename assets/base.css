@@ -1594,6 +1594,34 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
+/* ── Featured Product Payment Icons (dark theme) ─────────── */
+.fp-payment-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.fp-payment-icon {
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 3px;
+  padding: 4px 9px;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.05);
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.fp-payment-icon.pm-paypal { color: #6ab3f3; font-style: italic; }
+.fp-payment-icon.pm-klarna { background: rgba(255,179,199,0.2); border-color: rgba(255,179,199,0.4); color: #ffb3c7; }
+.fp-payment-icon.pm-mc { color: #ff6b6b; }
+.fp-payment-icon.pm-amex { color: #6ab3f3; }
+.fp-payment-icon.pm-apple { font-size: 0.58rem; }
+
 /* ── Featured Product Trust Badges (dark theme) ─────────── */
 .featured-product__trust {
   display: flex;
