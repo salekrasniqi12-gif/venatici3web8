@@ -1,6 +1,6 @@
 {% assign product = section.settings.product %}
 {% if product == blank %}
-  {% assign product = all_products['venatici-nuit-de-lune'] %}
+  {% assign product = all_products['vena-coconut'] %}
 {% endif %}
 
 <section class="featured-product" id="featured-product" data-product-section>
@@ -8,7 +8,7 @@
 
     <a
       class="featured-product__image-wrap"
-      href="{{ product.url | default: '/products/venatici-nuit-de-lune' }}"
+      href="{{ product.url | default: '/products/vena-coconut' }}"
       aria-label="{{ product.title | default: 'Venatici Nuit De Lune' }}"
     >
       {% if product != blank and product.featured_image %}
