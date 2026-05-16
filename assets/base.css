@@ -1615,6 +1615,136 @@ body.template-index .site-header--expanded {
   }
 }
 
+/* ── Comparison Table ────────────────────────────────────── */
+.comparison {
+  background: #0d0d0d;
+  padding: 5rem 1.5rem;
+}
+
+.comparison__inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.comparison__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-weight: 400;
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: 3rem;
+  line-height: 1.2;
+}
+
+.comparison__table {
+  display: grid;
+  grid-template-columns: 1fr 140px 140px;
+  gap: 0;
+}
+
+.comparison__features {
+  display: flex;
+  flex-direction: column;
+}
+
+.comparison__feature-header {
+  height: 120px;
+}
+
+.comparison__feature-row {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.comparison__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px 8px 0 0;
+}
+
+.comparison__col--us {
+  background: rgba(201,169,110,0.08);
+  border: 1px solid rgba(201,169,110,0.25);
+  border-bottom: none;
+}
+
+.comparison__col-header {
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
+}
+
+.comparison__col-img {
+  width: 56px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.comparison__col-img--placeholder {
+  width: 56px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comparison__col-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+}
+
+.comparison__col--us .comparison__col-name {
+  color: var(--color-accent);
+}
+
+.comparison__col--them .comparison__col-name {
+  color: rgba(255,255,255,0.35);
+}
+
+.comparison__cell {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.comparison__cell--check {
+  color: var(--color-accent);
+}
+
+.comparison__cell--cross {
+  color: rgba(255,255,255,0.2);
+}
+
+@media (max-width: 480px) {
+  .comparison__table {
+    grid-template-columns: 1fr 100px 100px;
+  }
+
+  .comparison__col-img {
+    width: 44px;
+    height: 56px;
+  }
+}
+
 /* ── Featured Product Payment Icons (dark theme) ─────────── */
 /* ── SVG Payment Icon Row ─────────────────────────────────── */
 .payment-icons-row {

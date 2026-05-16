@@ -1,5 +1,20 @@
 {
   "sections": {
+    "comparison": {
+      "type": "comparison-table",
+      "settings": {
+        "heading": "Wie wir im Vergleich abschneiden",
+        "product_image": "https://res.cloudinary.com/dj4rhk89z/image/upload/v1778800358/IMG_0286_vxf0er.jpg"
+      },
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "label": "40% Parfumöl" } },
+        "f2": { "type": "feature", "settings": { "label": "Langanhaltend 8–12 Std." } },
+        "f3": { "type": "feature", "settings": { "label": "Handgefertigt" } },
+        "f4": { "type": "feature", "settings": { "label": "Premium-Verpackung" } },
+        "f5": { "type": "feature", "settings": { "label": "30 Tage Garantie" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5"]
+    },
     "main": {
       "type": "product-main",
       "settings": {
@@ -40,5 +55,5 @@
       "block_order": ["note-top", "note-heart", "note-base"]
     }
   },
-  "order": ["main"]
+  "order": ["main", "comparison"]
 }
