@@ -1931,11 +1931,13 @@ body.template-product .cart-count {
 }
 
 .product-main__slide--contain img {
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center 8%;
 }
 
 .product-main__slide--cover img {
   object-fit: cover;
+  object-position: center center;
 }
 
 /* Prev / Next arrows */
