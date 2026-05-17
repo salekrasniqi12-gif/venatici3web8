@@ -160,6 +160,9 @@
       <p class="atc-error"></p>
     </form>
 
+    <!-- Payment Icons -->
+    {% render 'payment-icons', style: 'light' %}
+
     <!-- Trust Badges -->
     <div class="product-main__trust">
       <div class="trust-badge">
@@ -177,9 +180,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Payment Icons -->
-    {% render 'payment-icons', style: 'light' %}
 
     <!-- Description Accordion -->
     {%- assign desc = product.description -%}
