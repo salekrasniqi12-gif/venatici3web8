@@ -1932,7 +1932,7 @@ body.template-product .cart-count {
 
 .product-main__slide--contain img {
   object-fit: cover;
-  object-position: center 15%;
+  object-position: center 20%;
 }
 
 .product-main__slide--cover img {
@@ -1985,6 +1985,17 @@ body.template-product .cart-count {
   display: none;
   gap: 6px;
   z-index: 2;
+}
+
+/* Dots outside slider on mobile */
+.product-main__gallery > .product-main__slider-dots {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  background: #fff;
+  padding: 0.6rem 0;
+  justify-content: center;
 }
 
 .product-main__slider-dot {
@@ -2511,7 +2522,7 @@ body.template-product .cart-count {
   }
 
   .product-main__slider {
-    height: 110vw;
+    height: 120vw;
     cursor: default;
   }
 
@@ -2525,7 +2536,7 @@ body.template-product .cart-count {
     display: none;
   }
 
-  .product-main__slider-dots {
+  .product-main__gallery > .product-main__slider-dots {
     display: flex;
   }
 
