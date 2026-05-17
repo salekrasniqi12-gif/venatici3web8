@@ -1901,14 +1901,15 @@ body.template-product .cart-count {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 0;
   background: #f7f7f7;
 }
 
 .product-main__slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center top;
   pointer-events: none;
   -webkit-user-drag: none;
 }
