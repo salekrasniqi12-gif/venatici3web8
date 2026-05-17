@@ -5,31 +5,46 @@
     {%- assign product_img = product.featured_image | image_url: width: 1000 -%}
   {%- endif -%}
 
-  <!-- Gallery -->
+  <!-- Gallery Slider -->
+  {%- assign slide_1 = 'https://res.cloudinary.com/dj4rhk89z/image/upload/q_auto,f_auto,w_1200/v1778975713/IMG_0331_j94ebe.jpg' -%}
+  {%- assign slide_2 = 'https://res.cloudinary.com/dj4rhk89z/image/upload/q_auto,f_auto,w_1200/v1778975825/IMG_9835_h3gd6m.png' -%}
+  {%- assign slide_3 = 'https://res.cloudinary.com/dj4rhk89z/image/upload/q_auto,f_auto,w_1200/v1778800358/IMG_0286_vxf0er.jpg' -%}
+  {%- assign thumb_1 = 'https://res.cloudinary.com/dj4rhk89z/image/upload/q_auto,f_auto,w_200/v1778975713/IMG_0331_j94ebe.jpg' -%}
+  {%- assign thumb_2 = 'https://res.cloudinary.com/dj4rhk89z/image/upload/q_auto,f_auto,w_200/v1778975825/IMG_9835_h3gd6m.png' -%}
+  {%- assign thumb_3 = 'https://res.cloudinary.com/dj4rhk89z/image/upload/q_auto,f_auto,w_200/v1778800358/IMG_0286_vxf0er.jpg' -%}
+
   <div class="product-main__gallery">
-    <div class="product-main__image-wrap">
-      <img
-        class="product-main__image js-product-main-img"
-        src="{{ product_img }}"
-        alt="{{ product.title | default: 'Venatici Nuit De Lune' | escape }}"
-        width="800"
-        height="900"
-        loading="eager"
-      >
+    <div class="product-main__slider" data-product-slider>
+      <div class="product-main__slider-track" data-slider-track>
+        <div class="product-main__slide">
+          <img src="{{ slide_1 }}" alt="Venatici Nuit De Lune – Flacon" width="800" height="900" loading="eager">
+        </div>
+        <div class="product-main__slide">
+          <img src="{{ slide_2 }}" alt="Venatici Nuit De Lune – Duftnoten" width="800" height="900" loading="lazy">
+        </div>
+        <div class="product-main__slide">
+          <img src="{{ slide_3 }}" alt="Venatici Nuit De Lune – Stimmung" width="800" height="900" loading="lazy">
+        </div>
+      </div>
+      <button class="product-main__slider-prev" data-slider-prev aria-label="Vorheriges Bild">&#8249;</button>
+      <button class="product-main__slider-next" data-slider-next aria-label="Nächstes Bild">&#8250;</button>
+      <div class="product-main__slider-dots" data-slider-dots>
+        <button class="product-main__slider-dot product-main__slider-dot--active" data-dot="0" aria-label="Bild 1"></button>
+        <button class="product-main__slider-dot" data-dot="1" aria-label="Bild 2"></button>
+        <button class="product-main__slider-dot" data-dot="2" aria-label="Bild 3"></button>
+      </div>
     </div>
-    {%- if product.images.size > 1 -%}
     <div class="product-main__thumbs">
-      {%- for img in product.images -%}
-        <button
-          class="product-main__thumb{% if forloop.first %} product-main__thumb--active{% endif %}"
-          data-full="{{ img | image_url: width: 1000 }}"
-          aria-label="Bild {{ forloop.index }}"
-        >
-          <img src="{{ img | image_url: width: 200 }}" alt="{{ img.alt | escape }}" width="80" height="80" loading="lazy">
-        </button>
-      {%- endfor -%}
+      <button class="product-main__thumb product-main__thumb--active" data-thumb="0" aria-label="Bild 1">
+        <img src="{{ thumb_1 }}" alt="Flacon" width="80" height="80" loading="lazy">
+      </button>
+      <button class="product-main__thumb" data-thumb="1" aria-label="Bild 2">
+        <img src="{{ thumb_2 }}" alt="Duftnoten" width="80" height="80" loading="lazy">
+      </button>
+      <button class="product-main__thumb" data-thumb="2" aria-label="Bild 3">
+        <img src="{{ thumb_3 }}" alt="Stimmung" width="80" height="80" loading="lazy">
+      </button>
     </div>
-    {%- endif -%}
   </div>
 
   <!-- Info -->

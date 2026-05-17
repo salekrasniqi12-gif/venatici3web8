@@ -481,27 +481,86 @@
     }
   };
 
-  // ── Product Gallery ──────────────────────────────────────────
+  // ── Product Gallery Slider ───────────────────────────────────
   const ProductGallery = {
-    init() {
-      const gallery = document.querySelector('.product-main__gallery');
-      if (!gallery) return;
+    current: 0,
+    total: 3,
 
-      const mainImg = gallery.querySelector('.js-product-main-img');
-      const thumbs  = gallery.querySelectorAll('.product-main__thumb');
+    init() {
+      const slider = document.querySelector('[data-product-slider]');
+      if (!slider) return;
+
+      const track     = slider.querySelector('[data-slider-track]');
+      const prevBtn   = slider.querySelector('[data-slider-prev]');
+      const nextBtn   = slider.querySelector('[data-slider-next]');
+      const dots      = slider.querySelectorAll('[data-dot]');
+      const thumbs    = document.querySelectorAll('[data-thumb]');
+
+      this.total = slider.querySelectorAll('.product-main__slide').length;
+
+      const goTo = (index) => {
+        this.current = (index + this.total) % this.total;
+        track.style.transform = `translateX(-${this.current * 100}%)`;
+
+        dots.forEach((d, i) => d.classList.toggle('product-main__slider-dot--active', i === this.current));
+        thumbs.forEach((t, i) => t.classList.toggle('product-main__thumb--active', i === this.current));
+      };
+
+      if (prevBtn) prevBtn.addEventListener('click', () => goTo(this.current - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => goTo(this.current + 1));
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => goTo(parseInt(dot.dataset.dot, 10)));
+      });
 
       thumbs.forEach(thumb => {
-        thumb.addEventListener('click', () => {
-          thumbs.forEach(t => t.classList.remove('product-main__thumb--active'));
-          thumb.classList.add('product-main__thumb--active');
-          if (mainImg && thumb.dataset.full) {
-            mainImg.style.opacity = '0';
-            setTimeout(() => {
-              mainImg.src = thumb.dataset.full;
-              mainImg.style.opacity = '1';
-            }, 150);
-          }
-        });
+        thumb.addEventListener('click', () => goTo(parseInt(thumb.dataset.thumb, 10)));
+      });
+
+      // Touch / swipe
+      let startX = 0;
+      let startY = 0;
+      let dragging = false;
+
+      track.addEventListener('touchstart', e => {
+        startX   = e.touches[0].clientX;
+        startY   = e.touches[0].clientY;
+        dragging = true;
+      }, { passive: true });
+
+      track.addEventListener('touchmove', e => {
+        if (!dragging) return;
+        const dx = Math.abs(e.touches[0].clientX - startX);
+        const dy = Math.abs(e.touches[0].clientY - startY);
+        if (dx > dy) e.preventDefault();
+      }, { passive: false });
+
+      track.addEventListener('touchend', e => {
+        if (!dragging) return;
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) goTo(diff > 0 ? this.current + 1 : this.current - 1);
+        dragging = false;
+      });
+
+      // Mouse drag (desktop)
+      let mouseStartX = 0;
+      let mouseDragging = false;
+
+      track.addEventListener('mousedown', e => {
+        mouseStartX   = e.clientX;
+        mouseDragging = true;
+        track.style.cursor = 'grabbing';
+      });
+      track.addEventListener('mouseup', e => {
+        if (!mouseDragging) return;
+        mouseDragging = false;
+        track.style.cursor = 'grab';
+        const diff = mouseStartX - e.clientX;
+        if (Math.abs(diff) > 50) goTo(diff > 0 ? this.current + 1 : this.current - 1);
+      });
+      track.addEventListener('mouseleave', () => {
+        mouseDragging = false;
+        track.style.cursor = 'grab';
       });
     }
   };
