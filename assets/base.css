@@ -1932,7 +1932,7 @@ body.template-product .cart-count {
 
 .product-main__slide--contain img {
   object-fit: cover;
-  object-position: center 8%;
+  object-position: center 25%;
 }
 
 .product-main__slide--cover img {
