@@ -301,12 +301,41 @@
     }
   };
 
-  // ── Hero Ken Burns ───────────────────────────────────────────
+  // ── Hero Ken Burns + Video Autoplay ─────────────────────────
   const Hero = {
     init() {
       const hero = document.querySelector('.hero');
       if (!hero) return;
       requestAnimationFrame(() => hero.classList.add('hero--loaded'));
+
+      // Force autoplay on all hero videos — suppresses browser play button
+      hero.querySelectorAll('video').forEach(video => {
+        video.muted = true;
+        video.playsInline = true;
+        video.setAttribute('playsinline', '');
+        video.setAttribute('webkit-playsinline', '');
+        video.removeAttribute('controls');
+
+        const tryPlay = () => {
+          const p = video.play();
+          if (p !== undefined) p.catch(() => {});
+        };
+
+        if (video.readyState >= 2) {
+          tryPlay();
+        } else {
+          video.addEventListener('canplay', tryPlay, { once: true });
+        }
+
+        // Retry on first user interaction if blocked
+        const onInteract = () => {
+          tryPlay();
+          document.removeEventListener('touchstart', onInteract);
+          document.removeEventListener('click', onInteract);
+        };
+        document.addEventListener('touchstart', onInteract, { once: true, passive: true });
+        document.addEventListener('click', onInteract, { once: true });
+      });
     }
   };
 

@@ -570,6 +570,23 @@ body.template-index .site-header--expanded {
   z-index: 1;
 }
 
+/* Hide all native browser video controls & play button overlays */
+.hero__video::-webkit-media-controls,
+.hero__video::-webkit-media-controls-enclosure,
+.hero__video::-webkit-media-controls-panel,
+.hero__video::-webkit-media-controls-play-button,
+.hero__video::-webkit-media-controls-start-playback-button,
+.hero__video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+  -webkit-appearance: none;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.hero__video {
+  pointer-events: none;
+}
+
 .hero--loaded .hero__bg {
   transform: scale(1);
 }
