@@ -1926,9 +1926,16 @@ body.template-product .cart-count {
 .product-main__slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
   pointer-events: none;
   -webkit-user-drag: none;
+}
+
+.product-main__slide--contain img {
+  object-fit: contain;
+}
+
+.product-main__slide--cover img {
+  object-fit: cover;
 }
 
 /* Prev / Next arrows */
@@ -2502,20 +2509,13 @@ body.template-product .cart-count {
   }
 
   .product-main__slider {
-    height: 100vw;
+    height: 110vw;
     cursor: default;
   }
 
   .product-main__slide {
     padding: 0;
     background: #fff;
-  }
-
-  .product-main__slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center top;
   }
 
   .product-main__slider-prev,
