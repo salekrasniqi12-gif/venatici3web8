@@ -203,11 +203,11 @@
     {%- if desc == blank -%}{%- assign desc = section.settings.description -%}{%- endif -%}
     {%- if desc != blank -%}
     <div class="product-main__accordion">
-      <button class="product-main__accordion-btn" aria-expanded="true">
+      <button class="product-main__accordion-btn" aria-expanded="false">
         <span>BESCHREIBUNG</span>
-        <span class="product-main__accordion-chevron">−</span>
+        <span class="product-main__accordion-chevron">+</span>
       </button>
-      <div class="product-main__accordion-body">
+      <div class="product-main__accordion-body" style="display:none">
         <div class="product-main__accordion-content">{{ desc }}</div>
       </div>
     </div>
