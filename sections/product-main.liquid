@@ -50,6 +50,23 @@
   <!-- Info -->
   <div class="product-main__info">
 
+    <!-- Social Proof Bar -->
+    <div class="product-social-proof">
+      <div class="product-social-proof__avatars">
+        <div class="product-social-proof__avatar product-social-proof__avatar--1" aria-hidden="true">L</div>
+        <div class="product-social-proof__avatar product-social-proof__avatar--2" aria-hidden="true">S</div>
+      </div>
+      <span class="product-social-proof__check" aria-hidden="true">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="7" cy="7" r="7" fill="#1a73e8"/>
+          <polyline points="3.5,7 6,9.5 10.5,4.5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <p class="product-social-proof__text">
+        <strong>Lena, Sophie</strong> und 1.000+ weitere Kunden lieben <strong>VENATICI</strong>
+      </p>
+    </div>
+
     <h1 class="product-main__title">
       {{- product.title | upcase | default: 'VENATICI NUIT DE LUNE' -}}
     </h1>
