@@ -1931,8 +1931,7 @@ body.template-product .cart-count {
 }
 
 .product-main__slide--contain img {
-  object-fit: cover;
-  object-position: center 10%;
+  object-fit: contain;
 }
 
 .product-main__slide--cover img {
@@ -2529,6 +2528,11 @@ body.template-product .cart-count {
   .product-main__slide {
     padding: 0;
     background: #fff;
+  }
+
+  .product-main__slide--contain img {
+    object-fit: cover;
+    object-position: center 10%;
   }
 
   .product-main__slider-prev,
