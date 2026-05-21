@@ -64,7 +64,7 @@
 
     <div class="product-main__price">
       {%- if product.selected_or_first_available_variant -%}
-        {{ product.selected_or_first_available_variant.price | money }}
+        {{ product.selected_or_first_available_variant.price | divided_by: 100.0 | round }}€
       {%- else -%}
         {{ section.settings.fallback_price }}
       {%- endif -%}
@@ -124,10 +124,10 @@
             {%- assign first_price = product.variants.first.price -%}
             {%- assign savings = first_price | times: 2 | minus: variant.price -%}
             {%- if savings > 0 -%}
-              <span class="bundle-option__badge">SPARE {{ savings | money }}</span>
+              <span class="bundle-option__badge">SPARE {{ savings | divided_by: 100.0 | round }}€</span>
             {%- endif -%}
           {%- endif -%}
-          <span class="bundle-option__price">{{ variant.price | money }}</span>
+          <span class="bundle-option__price">{{ variant.price | divided_by: 100.0 | round }}€</span>
         </button>
       {%- endfor -%}
     </div>

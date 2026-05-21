@@ -99,10 +99,7 @@
     },
 
     formatMoney(cents) {
-      return (cents / 100).toLocaleString('de-DE', {
-        style: 'currency',
-        currency: 'EUR'
-      });
+      return Math.round(cents / 100) + '€';
     },
 
     async renderDrawer() {
