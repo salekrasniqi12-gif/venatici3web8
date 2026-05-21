@@ -637,6 +637,44 @@
     }
   };
 
+  // ── Newsletter Popup ─────────────────────────────────────────
+  const NewsletterPopup = {
+    init() {
+      const popup   = document.getElementById('nl-popup');
+      if (!popup) return;
+      if (localStorage.getItem('nl_dismissed')) return;
+
+      const overlay = document.getElementById('nl-popup-overlay');
+      const closeBtn = document.getElementById('nl-popup-close');
+      const form    = document.getElementById('nl-popup-form');
+      const success = document.getElementById('nl-popup-success');
+
+      const show = () => popup.classList.add('nl-popup--visible');
+      const hide = () => {
+        popup.classList.remove('nl-popup--visible');
+        localStorage.setItem('nl_dismissed', '1');
+      };
+
+      setTimeout(show, 15000);
+
+      if (overlay) overlay.addEventListener('click', hide);
+      if (closeBtn) closeBtn.addEventListener('click', hide);
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') hide();
+      });
+
+      if (form) {
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          form.style.display = 'none';
+          if (success) success.style.display = 'flex';
+          setTimeout(hide, 6000);
+        });
+      }
+    }
+  };
+
   // ── Init ─────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
     Header.init();
@@ -653,6 +691,7 @@
     StatsCounter.init();
     ScrollTilt.init();
     ProductGallery.init();
+    NewsletterPopup.init();
     StickyATC.init();
     Accordion.init();
     BundlePicker.init();
