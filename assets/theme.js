@@ -679,9 +679,18 @@
                 data: {
                   type: 'subscription',
                   attributes: {
-                    list_id: 'newsletter',
-                    email: email,
-                    custom_source: 'website_popup'
+                    custom_source: 'website_popup',
+                    profile: {
+                      data: {
+                        type: 'profile',
+                        attributes: { email: email }
+                      }
+                    }
+                  },
+                  relationships: {
+                    list: {
+                      data: { type: 'list', id: 'TRPhZJ' }
+                    }
                   }
                 }
               })
