@@ -671,16 +671,22 @@
           btn.setAttribute('disabled', '');
 
           try {
-            const body = new FormData();
-            body.append('form_type', 'customer');
-            body.append('utf8', '✓');
-            body.append('contact[email]', email);
-            body.append('contact[tags]', 'newsletter');
-
-            await fetch('/contact', { method: 'POST', body });
-          } catch (_) {
-            // fail silently — still show the code
-          }
+            // Send to Klaviyo
+            await fetch('https://a.klaviyo.com/client/subscriptions/?company_id=Vyrr67', {
+              method: 'POST',
+              headers: { 'content-type': 'application/json', 'revision': '2023-12-15' },
+              body: JSON.stringify({
+                data: {
+                  type: 'subscription',
+                  attributes: {
+                    list_id: 'newsletter',
+                    email: email,
+                    custom_source: 'website_popup'
+                  }
+                }
+              })
+            });
+          } catch (_) {}
 
           form.style.display = 'none';
           if (success) success.style.display = 'flex';
