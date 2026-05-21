@@ -23,7 +23,7 @@
       "type": "featured-product",
       "settings": {
         "section_label": "Der Duft",
-        "fallback_price": "€79,00",
+        "fallback_price": "50€",
         "show_qty": true,
         "force_available": true
       }
