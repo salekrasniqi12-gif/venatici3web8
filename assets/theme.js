@@ -665,8 +665,26 @@
       });
 
       if (form) {
-        form.addEventListener('submit', e => {
+        form.addEventListener('submit', async e => {
           e.preventDefault();
+          const email = form.querySelector('input[type="email"]').value;
+          const btn   = form.querySelector('.nl-popup__btn');
+
+          btn.textContent = '...';
+          btn.setAttribute('disabled', '');
+
+          try {
+            const body = new FormData();
+            body.append('form_type', 'customer');
+            body.append('utf8', '✓');
+            body.append('contact[email]', email);
+            body.append('contact[tags]', 'newsletter');
+
+            await fetch('/contact', { method: 'POST', body });
+          } catch (_) {
+            // fail silently — still show the code
+          }
+
           form.style.display = 'none';
           if (success) success.style.display = 'flex';
           setTimeout(hide, 6000);
