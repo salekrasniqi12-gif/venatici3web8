@@ -64,7 +64,7 @@
 
     <div class="product-main__price">
       {%- if product.selected_or_first_available_variant -%}
-        {{ product.selected_or_first_available_variant.price | divided_by: 100.0 | round }}€
+        {{ product.selected_or_first_available_variant.price | money_without_currency }}€
       {%- else -%}
         {{ section.settings.fallback_price }}
       {%- endif -%}
@@ -127,7 +127,7 @@
               <span class="bundle-option__badge">SPARE {{ savings | divided_by: 100.0 | round }}€</span>
             {%- endif -%}
           {%- endif -%}
-          <span class="bundle-option__price">{{ variant.price | divided_by: 100.0 | round }}€</span>
+          <span class="bundle-option__price">{{ variant.price | money_without_currency }}€</span>
         </button>
       {%- endfor -%}
     </div>

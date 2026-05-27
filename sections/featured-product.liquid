@@ -42,7 +42,7 @@
       {% endif %}
 
       {% if product != blank and product.price > 0 %}
-        <div class="featured-product__price fade-in-up">{{ product.price | divided_by: 100.0 | round }}€</div>
+        <div class="featured-product__price fade-in-up">{{ product.price | money_without_currency }}€</div>
       {% elsif section.settings.fallback_price != blank %}
         <div class="featured-product__price fade-in-up">{{ section.settings.fallback_price }}</div>
       {% endif %}

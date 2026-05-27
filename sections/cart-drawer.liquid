@@ -29,18 +29,25 @@
             {% endif %}
 
             <div class="cart-item__details">
-              <div class="cart-item__title">{{ item.product.title }}</div>
+              <div class="cart-item__top">
+                <div class="cart-item__title">{{ item.product.title }}</div>
+                <button
+                  class="cart-item__delete js-cart-remove"
+                  data-key="{{ item.key }}"
+                  aria-label="Entfernen"
+                >&#10005;</button>
+              </div>
               {% unless item.variant.title == 'Default Title' %}
                 <div class="cart-item__variant">{{ item.variant.title }}</div>
               {% endunless %}
-              <div class="cart-item__price">
-                {{ item.final_line_price | money }}
+              <div class="cart-item__bottom">
+                <div class="cart-item__qty">
+                  <button class="cart-item__qty-btn js-cart-qty" data-key="{{ item.key }}" data-action="decrease" aria-label="Weniger">−</button>
+                  <span class="cart-item__qty-num">{{ item.quantity }}</span>
+                  <button class="cart-item__qty-btn js-cart-qty" data-key="{{ item.key }}" data-action="increase" aria-label="Mehr">+</button>
+                </div>
+                <div class="cart-item__price">{{ item.final_line_price | money_without_currency }}€</div>
               </div>
-              <button
-                class="cart-item__remove js-cart-remove"
-                data-key="{{ item.key }}"
-                aria-label="{{ 'cart.remove' | t }}"
-              >{{ 'cart.remove' | t }}</button>
             </div>
           </div>
         {% endfor %}

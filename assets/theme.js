@@ -99,7 +99,16 @@
     },
 
     formatMoney(cents) {
-      return Math.round(cents / 100) + '€';
+      return (cents / 100).toFixed(2).replace('.', ',') + '€';
+    },
+
+    async changeQty(key, quantity) {
+      const res = await fetch('/cart/change.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: key, quantity })
+      });
+      return res.json();
     },
 
     async renderDrawer() {
@@ -134,25 +143,46 @@
             : `<div class="cart-item__image"></div>`
           }
           <div class="cart-item__details">
-            <div class="cart-item__title">${item.product_title}</div>
+            <div class="cart-item__top">
+              <div class="cart-item__title">${item.product_title}</div>
+              <button class="cart-item__delete js-cart-remove" data-key="${item.key}" aria-label="Entfernen">&#10005;</button>
+            </div>
             ${item.variant_title && item.variant_title !== 'Default Title'
               ? `<div class="cart-item__variant">${item.variant_title}</div>`
               : ''
             }
-            <div class="cart-item__price">${this.formatMoney(item.final_line_price)}</div>
-            <button
-              class="cart-item__remove js-cart-remove"
-              data-key="${item.key}"
-              aria-label="Remove ${item.product_title}"
-            >Remove</button>
+            <div class="cart-item__bottom">
+              <div class="cart-item__qty">
+                <button class="cart-item__qty-btn js-cart-qty" data-key="${item.key}" data-action="decrease">−</button>
+                <span class="cart-item__qty-num">${item.quantity}</span>
+                <button class="cart-item__qty-btn js-cart-qty" data-key="${item.key}" data-action="increase">+</button>
+              </div>
+              <div class="cart-item__price">${this.formatMoney(item.final_line_price)}</div>
+            </div>
           </div>
         </div>
       `).join('');
 
-      // Bind remove buttons
       body.querySelectorAll('.js-cart-remove').forEach(btn => {
         btn.addEventListener('click', async () => {
           await CartAPI.removeItem(btn.dataset.key);
+          CartAPI.renderDrawer();
+        });
+      });
+
+      body.querySelectorAll('.js-cart-qty').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const key = btn.dataset.key;
+          const action = btn.dataset.action;
+          const cart = await CartAPI.getCart();
+          const item = cart.items.find(i => i.key === key);
+          if (!item) return;
+          const newQty = action === 'increase' ? item.quantity + 1 : item.quantity - 1;
+          if (newQty < 1) {
+            await CartAPI.removeItem(key);
+          } else {
+            await CartAPI.changeQty(key, newQty);
+          }
           CartAPI.renderDrawer();
         });
       });

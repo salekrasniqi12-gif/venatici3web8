@@ -4,14 +4,14 @@
 
 /* ── 1. Design Tokens ─────────────────────────────────────── */
 :root {
-  --color-bg:           #0a0a0a;
-  --color-surface:      #111111;
-  --color-surface-2:    #1a1a1a;
-  --color-text:         #f5f0e8;
-  --color-text-muted:   #9a8f7e;
+  --color-bg:           #fafaf8;
+  --color-surface:      #f5f0e8;
+  --color-surface-2:    #ede8de;
+  --color-text:         #1a1a1a;
+  --color-text-muted:   #6b6055;
   --color-accent:       #c9a96e;
-  --color-border:       #2a2a2a;
-  --color-overlay:      rgba(10, 10, 10, 0.68);
+  --color-border:       #e0d8cc;
+  --color-overlay:      rgba(10, 10, 10, 0.55);
 
   --font-heading:       'Cormorant Garamond', Georgia, serif;
   --font-body:          'Jost', 'Montserrat', sans-serif;
@@ -230,11 +230,28 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .site-header--scrolled {
-  background: rgba(10, 10, 10, 0.95);
+  background: rgba(250, 250, 248, 0.97);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
   height: var(--header-h);
 }
+
+/* Header transparent state (hero visible) — keep white text on dark video */
+.site-header:not(.site-header--scrolled) .site-header__logo,
+.site-header:not(.site-header--scrolled) .site-header__nav a,
+.site-header:not(.site-header--scrolled) .cart-toggle {
+  color: #f5f0e8;
+}
+
+/* Hero text always stays light (dark video overlay) */
+.hero__content,
+.hero__content h1, .hero__content h2, .hero__content h3,
+.hero__label, .hero__sub {
+  color: #f5f0e8;
+}
+.hero__title { color: #f5f0e8; }
+.hero__scroll { color: rgba(245,240,232,0.6); }
 
 .site-header__inner {
   width: 100%;
@@ -512,18 +529,58 @@ body.template-index .site-header--expanded {
   margin-top: auto;
 }
 
-.cart-item__remove {
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  text-decoration: underline;
-  cursor: pointer;
-  transition: color var(--transition-fast);
-  margin-top: 0.3rem;
+.cart-item__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
 }
 
-.cart-item__remove:hover {
+.cart-item__delete {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color var(--transition-fast);
+  padding: 0.1rem 0.2rem;
+}
+
+.cart-item__delete:hover {
+  color: var(--color-text);
+}
+
+.cart-item__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.6rem;
+}
+
+.cart-item__qty {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--color-border);
+  padding: 0.2rem 0.4rem;
+}
+
+.cart-item__qty-btn {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  width: 20px;
+  text-align: center;
+  transition: color var(--transition-fast);
+}
+
+.cart-item__qty-btn:hover {
+  color: var(--color-text);
+}
+
+.cart-item__qty-num {
+  font-size: 0.85rem;
+  min-width: 18px;
+  text-align: center;
   color: var(--color-text);
 }
 
@@ -1634,7 +1691,7 @@ body.template-index .site-header--expanded {
 
 /* ── Comparison Table ────────────────────────────────────── */
 .comparison {
-  background: #0d0d0d;
+  background: var(--color-surface);
   padding: 5rem 1.5rem;
 }
 
@@ -1672,7 +1729,7 @@ body.template-index .site-header--expanded {
   display: flex;
   align-items: center;
   padding: 1rem 0;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid var(--color-border);
   font-size: 0.85rem;
   color: var(--color-text-muted);
   line-height: 1.4;
@@ -1846,15 +1903,10 @@ body.template-index .site-header--expanded {
    PRODUCT MAIN PAGE (Asabi-Style)
    ============================================================ */
 
-body.template-product {
-  background: #fff;
-  color: #111;
-}
-
 body.template-product .site-header {
-  background: rgba(255,255,255,0.97) !important;
+  background: rgba(250, 250, 248, 0.97) !important;
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--color-border);
   height: var(--header-h) !important;
 }
 
@@ -1870,12 +1922,12 @@ body.template-product .site-header--expanded .site-header__logo {
 body.template-product .site-header .site-header__logo,
 body.template-product .site-header .nav__link,
 body.template-product .site-header .cart-trigger {
-  color: #111 !important;
+  color: var(--color-text) !important;
 }
 
 body.template-product .cart-count {
-  background: #111 !important;
-  color: #fff !important;
+  background: var(--color-text) !important;
+  color: var(--color-bg) !important;
 }
 
 .product-main {
@@ -2251,8 +2303,8 @@ body.template-product .cart-count {
 .product-main__atc-btn {
   width: 100%;
   height: 58px;
-  background: #0d1b2e;
-  color: #fff;
+  background: var(--color-accent);
+  color: #1a1a1a;
   border: none;
   font-family: var(--font-body);
   font-size: 0.78rem;
@@ -2263,7 +2315,7 @@ body.template-product .cart-count {
 }
 
 .product-main__atc-btn:hover {
-  background: #1a3360;
+  background: #b8954f;
 }
 
 .product-main__atc-btn[aria-disabled="true"] {
@@ -2329,12 +2381,12 @@ body.template-product .cart-count {
 }
 
 .bundle-option--featured {
-  border-color: #0d1b2e;
-  background: #f8f9fb;
+  border-color: var(--color-accent);
+  background: #f5f0e8;
 }
 
 .bundle-option--featured.bundle-option--active {
-  background: #f0f3f8;
+  background: #ede8de;
 }
 
 .bundle-option__name {
@@ -2348,8 +2400,8 @@ body.template-product .cart-count {
   font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.08em;
-  background: #0d1b2e;
-  color: #fff;
+  background: var(--color-accent);
+  color: #1a1a1a;
   padding: 3px 8px;
   border-radius: 2px;
 }
@@ -2382,7 +2434,7 @@ body.template-product .cart-count {
   width: 28px;
   text-align: center;
   flex-shrink: 0;
-  color: #0d1b2e;
+  color: var(--color-accent);
 }
 
 .trust-badge__text {
@@ -2491,8 +2543,8 @@ body.template-product .cart-count {
 }
 
 .product-sticky-atc__btn {
-  background: #0d1b2e;
-  color: #fff;
+  background: var(--color-accent);
+  color: #1a1a1a;
   border: none;
   padding: 0 2.5rem;
   height: 48px;
@@ -2506,7 +2558,7 @@ body.template-product .cart-count {
 }
 
 .product-sticky-atc__btn:hover {
-  background: #1a3360;
+  background: #b8954f;
 }
 
 /* ── Mobile ── */
