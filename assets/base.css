@@ -4,13 +4,13 @@
 
 /* ── 1. Design Tokens ─────────────────────────────────────── */
 :root {
-  --color-bg:           #fafaf8;
-  --color-surface:      #f5f0e8;
-  --color-surface-2:    #ede8de;
-  --color-text:         #1a1a1a;
-  --color-text-muted:   #6b6055;
+  --color-bg:           #ffffff;
+  --color-surface:      #f8f8f8;
+  --color-surface-2:    #f0f0f0;
+  --color-text:         #111111;
+  --color-text-muted:   #6b6b6b;
   --color-accent:       #c9a96e;
-  --color-border:       #e0d8cc;
+  --color-border:       #e5e5e5;
   --color-overlay:      rgba(10, 10, 10, 0.55);
 
   --font-heading:       'Cormorant Garamond', Georgia, serif;
