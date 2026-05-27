@@ -1787,6 +1787,12 @@ body.template-index .site-header--expanded {
   border-radius: 8px 8px 0 0;
 }
 
+.comparison__col--them {
+  background: #f4f4f4;
+  border: 1px solid #e0e0e0;
+  border-bottom: none;
+}
+
 .comparison__col--us {
   background: rgba(201,169,110,0.08);
   border: 1px solid rgba(201,169,110,0.25);
@@ -1850,7 +1856,7 @@ body.template-index .site-header--expanded {
 }
 
 .comparison__cell--cross {
-  color: #ccc;
+  color: #bbb;
 }
 
 @media (max-width: 480px) {
