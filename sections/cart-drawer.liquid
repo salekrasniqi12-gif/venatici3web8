@@ -1,6 +1,19 @@
 <div class="cart-drawer" id="cart-drawer" aria-label="Cart" aria-modal="true" role="dialog">
   <div class="cart-drawer__overlay" tabindex="-1"></div>
 
+  {%- assign main_product = all_products['venatici-nuit-de-lune'] -%}
+  {%- if main_product.variants.size > 1 -%}
+    {%- assign bundle_variant = main_product.variants.last -%}
+    {%- assign single_variant = main_product.variants.first -%}
+    <div id="cart-bundle-data"
+      data-bundle-id="{{ bundle_variant.id }}"
+      data-bundle-price="{{ bundle_variant.price }}"
+      data-single-id="{{ single_variant.id }}"
+      data-single-price="{{ single_variant.price }}"
+      style="display:none"
+    ></div>
+  {%- endif -%}
+
   <div class="cart-drawer__panel">
     <div class="cart-drawer__header">
       <span class="cart-drawer__title">{{ 'cart.title' | t }}</span>

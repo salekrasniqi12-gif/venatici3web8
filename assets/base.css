@@ -460,6 +460,51 @@ body.template-index .site-header--expanded {
   padding: 3rem 0;
 }
 
+/* ── Cart Upsell Banner ── */
+.cart-upsell {
+  display: none;
+  margin: 1rem 0 0;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, rgba(201,169,110,0.12), rgba(201,169,110,0.06));
+  border: 1px solid rgba(201,169,110,0.4);
+  border-radius: 4px;
+  gap: 0.75rem;
+  flex-direction: column;
+}
+
+.cart-upsell--visible {
+  display: flex;
+}
+
+.cart-upsell__text {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.cart-upsell__text strong {
+  color: var(--color-accent);
+  font-size: 0.9rem;
+}
+
+.cart-upsell__btn {
+  width: 100%;
+  padding: 0.7rem;
+  background: var(--color-accent);
+  color: #1a1a1a;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cart-upsell__btn:hover {
+  background: #b8954f;
+}
+
 .cart-drawer__footer {
   padding: 2rem;
   border-top: 1px solid var(--color-border);

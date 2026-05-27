@@ -186,6 +186,55 @@
           CartAPI.renderDrawer();
         });
       });
+
+      // Upsell banner
+      CartAPI.renderUpsell(cart);
+    },
+
+    renderUpsell(cart) {
+      const bundleData = document.getElementById('cart-bundle-data');
+      if (!bundleData) return;
+
+      const bundleId = parseInt(bundleData.dataset.bundleId);
+      const bundlePrice = parseInt(bundleData.dataset.bundlePrice);
+      const singleId = parseInt(bundleData.dataset.singleId);
+      const singlePrice = parseInt(bundleData.dataset.singlePrice);
+
+      // Find if single variant is in cart with qty >= 2
+      const singleItem = cart.items.find(i => i.variant_id === singleId);
+      const bundleInCart = cart.items.find(i => i.variant_id === bundleId);
+      const savings = (singlePrice * 2) - bundlePrice;
+
+      let upsell = document.querySelector('.cart-upsell');
+      if (!upsell) {
+        upsell = document.createElement('div');
+        upsell.className = 'cart-upsell';
+        upsell.innerHTML = `
+          <p class="cart-upsell__text">
+            💡 <strong>Spare ${this.formatMoney(savings)}!</strong><br>
+            Hol dir 2x Nuit De Lune im Bundle für nur ${this.formatMoney(bundlePrice)} statt ${this.formatMoney(singlePrice * 2)}.
+          </p>
+          <button class="cart-upsell__btn js-upsell-btn">2X BUNDLE JETZT SICHERN</button>
+        `;
+        const footer = document.querySelector('.cart-drawer__footer');
+        if (footer) footer.prepend(upsell);
+
+        upsell.querySelector('.js-upsell-btn').addEventListener('click', async () => {
+          // Remove single items and add bundle
+          for (const item of cart.items) {
+            await CartAPI.removeItem(item.key);
+          }
+          await CartAPI.addItem(bundleId, 1);
+          CartAPI.renderDrawer();
+        });
+      }
+
+      // Show if single item qty >= 2 and bundle not already in cart
+      if (singleItem && singleItem.quantity >= 2 && !bundleInCart && savings > 0) {
+        upsell.classList.add('cart-upsell--visible');
+      } else {
+        upsell.classList.remove('cart-upsell--visible');
+      }
     }
   };
 
