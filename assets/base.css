@@ -51,6 +51,10 @@ body.body-cart-open {
   overflow: hidden;
 }
 
+body.body-cart-open .product-sticky-atc {
+  display: none !important;
+}
+
 img, video {
   display: block;
   max-width: 100%;
